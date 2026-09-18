@@ -40,3 +40,5 @@ export const casaLimonCopy = {
 
 export const DEMO_SLUG = "casa-limon";
 export const DEMO_BRAND_KEY = "casa-limon";
+/** Storefront header teaser only — never on Cairose marketing root. */
+export const DEMO_HERO_IMAGE = "/demo/hero-casa-limon.jpg";

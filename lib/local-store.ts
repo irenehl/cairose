@@ -27,7 +27,7 @@ import type {
 } from "./types";
 import { newId } from "./utils";
 
-const STORAGE_KEY = "cairose-local-v3";
+const STORAGE_KEY = "cairose-local-v4";
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export type LocalState = {

@@ -51,7 +51,7 @@ export const DEMO_PRODUCTS = [
     priceUsd: 28,
     forSubscription: true,
     forOccasion: true,
-    imageUrls: ["/demo/ramo-esencial.svg"],
+    imageUrls: ["/demo/ramo-esencial.jpg"],
   },
   {
     sku: "ramo-clasico",
@@ -63,7 +63,7 @@ export const DEMO_PRODUCTS = [
     priceUsd: 48,
     forSubscription: true,
     forOccasion: true,
-    imageUrls: ["/demo/ramo-clasico.svg"],
+    imageUrls: ["/demo/ramo-clasico.jpg"],
   },
   {
     sku: "ramo-especial",
@@ -75,7 +75,7 @@ export const DEMO_PRODUCTS = [
     priceUsd: 72,
     forSubscription: true,
     forOccasion: true,
-    imageUrls: ["/demo/ramo-especial.svg"],
+    imageUrls: ["/demo/ramo-especial.jpg"],
   },
   {
     sku: "girasoles-entry",
@@ -108,7 +108,7 @@ export const DEMO_PRODUCTS = [
     priceUsd: 75,
     forSubscription: false,
     forOccasion: true,
-    imageUrls: ["/demo/caja.svg"],
+    imageUrls: ["/demo/caja-premium.jpg"],
   },
 ];
 

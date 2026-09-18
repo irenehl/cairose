@@ -40,7 +40,14 @@ export const metadata: Metadata = {
   title: "Cairose",
   description:
     "No reemplazamos tu web. Cairose añade suscripciones y gift bajo tu marca. Nosotras no vendemos el ramo.",
-  icons: { icon: "/cairose-favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/cairose-favicon.svg", type: "image/svg+xml" },
+      { url: "/cairose-favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/cairose-favicon-48.png", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

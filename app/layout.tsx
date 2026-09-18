@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   title: "Cairose",
   description:
     "No reemplazamos tu web. Cairose añade suscripciones y gift bajo tu marca. Nosotras no vendemos el ramo.",
-  icons: { icon: "/cairose-mark.svg" },
+  icons: { icon: "/cairose-favicon.svg" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

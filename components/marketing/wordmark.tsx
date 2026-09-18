@@ -5,29 +5,22 @@ import { cn } from "@/lib/utils";
 type CairoseWordmarkProps = {
   href?: string;
   className?: string;
-  markSize?: number;
 };
 
 export function CairoseWordmark({
   href = "/",
   className,
-  markSize = 36,
 }: CairoseWordmarkProps) {
   return (
-    <Link
-      href={href}
-      className={cn("inline-flex items-center gap-2.5", className)}
-    >
+    <Link href={href} className={cn("inline-flex items-center", className)}>
       <Image
-        src="/isotipo-provisional-I1a.svg"
-        alt=""
-        width={markSize}
-        height={markSize}
+        src="/cairose-wordmark-on-light.svg"
+        alt="cairose"
+        width={140}
+        height={32}
         priority
+        className="h-8 w-auto"
       />
-      <span className="font-[family-name:var(--cao-font-display)] text-[1.35rem] font-extrabold tracking-tight text-[var(--cao-color-ink)]">
-        cairose
-      </span>
     </Link>
   );
 }

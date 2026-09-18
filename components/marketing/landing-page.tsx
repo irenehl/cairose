@@ -266,7 +266,7 @@ export function LandingPage() {
       <footer className="border-t border-[var(--cao-color-border)] bg-[var(--cao-color-bg-elevated)]">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <CairoseWordmark markSize={32} />
+            <CairoseWordmark />
             <p className="mt-3 max-w-sm text-sm text-[var(--cao-color-ink-muted)]">
               {copy.footer.claim}
             </p>

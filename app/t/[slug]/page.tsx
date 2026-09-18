@@ -6,11 +6,13 @@ import { usePublicProducts, usePublicTenant } from "@/lib/hooks";
 import { casaLimonCopy } from "@/lib/storefront-copy";
 import { formatUsdFromCents } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useTrackPage } from "@/lib/use-track-page";
 
 export default function StoreHomePage() {
   const params = useParams<{ slug: string }>();
   const tenant = usePublicTenant(params.slug);
   const products = usePublicProducts(tenant?._id);
+  useTrackPage("view_home", tenant?.slug);
 
   if (!tenant || products === undefined) return null;
 

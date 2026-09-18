@@ -8,6 +8,7 @@ import {
   usePublicSubscription,
   useRecordEvent,
 } from "@/lib/hooks";
+import { analyticsContext, track, whatsappHref } from "@/lib/analytics";
 import { casaLimonCopy } from "@/lib/storefront-copy";
 import type { CadenceCode, SubscriptionEventType } from "@/lib/types";
 import { formatDateEs } from "@/lib/utils";
@@ -39,7 +40,8 @@ export default function ManageSubscriptionPage() {
     return <p className="px-6 py-16">No encontramos este plan.</p>;
   }
 
-  const { subscription, shopName, whatsappOps } = detail;
+  const { subscription, shopName, whatsappOps, shopSlug } = detail;
+  const ctx = analyticsContext(shopSlug);
 
   async function act(
     type: SubscriptionEventType,
@@ -47,6 +49,14 @@ export default function ManageSubscriptionPage() {
   ) {
     setError(null);
     try {
+      if (type === "skip_next") {
+        track("skip_intent", { ...ctx, surface: "storefront" });
+        track("wa_handoff", { ...ctx, reason: "skip" });
+      }
+      if (type === "pause") {
+        track("pause_intent", { ...ctx, surface: "storefront" });
+        track("wa_handoff", { ...ctx, reason: "pause" });
+      }
       await record({
         subscriptionId: subscription._id,
         type,
@@ -84,8 +94,20 @@ export default function ManageSubscriptionPage() {
         </p>
       </div>
       <p className="text-sm text-[var(--tenant-color-ink-muted)]">
-        {casaLimonCopy.opsWhatsapp}
-        {whatsappOps ? ` ${whatsappOps}` : ""}
+        {casaLimonCopy.opsWhatsapp}{" "}
+        {whatsappOps ? (
+          <a
+            href={whatsappHref(whatsappOps)}
+            target="_blank"
+            rel="noreferrer"
+            className="underline"
+            onClick={() =>
+              track("wa_handoff", { ...ctx, reason: "support" })
+            }
+          >
+            {whatsappOps}
+          </a>
+        ) : null}
       </p>
       <div className="flex flex-wrap gap-2">
         <Button

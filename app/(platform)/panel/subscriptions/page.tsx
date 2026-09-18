@@ -6,6 +6,7 @@ import {
   usePanelSubscriptions,
   usePanelTenant,
 } from "@/lib/hooks";
+import { useTrackPage } from "@/lib/use-track-page";
 import { formatDateEs } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 
@@ -18,6 +19,8 @@ const CADENCE_LABEL: Record<string, string> = {
 export default function PlansPage() {
   const tenant = usePanelTenant();
   const rows = usePanelSubscriptions(tenant?._id);
+  useTrackPage("panel_view_plans", tenant?.slug);
+  useTrackPage("panel_view_subscribers", tenant?.slug);
 
   if (tenant === undefined || rows === undefined) return <p>Cargando…</p>;
   if (!tenant) return <p>Sin floristería.</p>;

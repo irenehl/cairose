@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { usePublicTenant } from "@/lib/hooks";
+import { analyticsContext, track, whatsappHref } from "@/lib/analytics";
 import { DEMO_BRAND_KEY, DEMO_SLUG, casaLimonCopy } from "@/lib/storefront-copy";
 
 export default function StorefrontLayout({
@@ -69,7 +70,25 @@ export default function StorefrontLayout({
       <div className="flex-1">{children}</div>
       <footer className="mt-16 px-4 py-8 text-sm text-[var(--tenant-ink-muted)] md:px-8">
         <p>{casaLimonCopy.footer}</p>
-        {tenant.whatsappOps && <p>WhatsApp {tenant.whatsappOps}</p>}
+        {tenant.whatsappOps && (
+          <p>
+            WhatsApp{" "}
+            <a
+              href={whatsappHref(tenant.whatsappOps)}
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+              onClick={() =>
+                track("wa_handoff", {
+                  ...analyticsContext(tenant.slug),
+                  reason: "support",
+                })
+              }
+            >
+              {tenant.whatsappOps}
+            </a>
+          </p>
+        )}
         <p className="mt-2 text-xs">{casaLimonCopy.payOutside}</p>
         <p className="mt-3 text-xs text-[var(--tenant-ink-muted)]">
           {casaLimonCopy.showcaseNote}

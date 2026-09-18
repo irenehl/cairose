@@ -7,6 +7,7 @@ import {
   usePanelTenant,
 } from "@/lib/hooks";
 import type { DeliveryStatus } from "@/lib/types";
+import { useTrackPage } from "@/lib/use-track-page";
 import { formatDateEs } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 
@@ -21,6 +22,7 @@ const STATUSES: { value: DeliveryStatus; label: string }[] = [
 export default function OrdersPage() {
   const tenant = usePanelTenant();
   const deliveries = usePanelDeliveries(tenant?._id);
+  useTrackPage("panel_view_orders", tenant?.slug);
   const actions = usePanelActions();
 
   if (tenant === undefined || deliveries === undefined) return <p>Cargando…</p>;

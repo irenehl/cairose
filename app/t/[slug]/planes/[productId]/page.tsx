@@ -1,7 +1,14 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useMemo, useState, type FormEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { interpolate } from "@/lib/copy";
 import {
   useCadences,
@@ -11,6 +18,7 @@ import {
   usePublicTenant,
   usePublicZones,
 } from "@/lib/hooks";
+import { analyticsContext, track } from "@/lib/analytics";
 import { casaLimonCopy } from "@/lib/storefront-copy";
 import { formatUsdFromCents } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -64,7 +72,8 @@ export default function SubscribePage() {
   const addOnTotal = (addOns ?? [])
     .filter((a) => selectedAddOns.includes(a._id))
     .reduce((sum, a) => sum + a.priceCents, 0);
-  const surcharge = selectedZone && !selectedZone.included ? selectedZone.surchargeCents : 0;
+  const surcharge =
+    selectedZone && !selectedZone.included ? selectedZone.surchargeCents : 0;
   const total = product.priceCents + addOnTotal + surcharge;
 
   async function submit(e: FormEvent) {
@@ -82,13 +91,19 @@ export default function SubscribePage() {
         payerEmail: payerEmail || undefined,
         payerPhone: payerPhone || undefined,
         recipientName: isGift ? recipientName : payerName,
-        recipientPhone: isGift ? recipientPhone || undefined : payerPhone || undefined,
+        recipientPhone: isGift
+          ? recipientPhone || undefined
+          : payerPhone || undefined,
         addressLine1,
         colonia: colonia || undefined,
         deliveryNotes: deliveryNotes || undefined,
         zoneId: zoneId || undefined,
         cardMessage: cardMessage || undefined,
         addOnIds: selectedAddOns,
+      });
+      track("subscribe_step", {
+        ...analyticsContext(tenant.slug),
+        step: "checkout",
       });
       router.push(`/t/${tenant.slug}/s/${id}`);
     } catch (err) {
@@ -99,182 +114,268 @@ export default function SubscribePage() {
   }
 
   return (
-    <div className="mx-auto grid w-full max-w-5xl gap-8 px-4 py-8 md:grid-cols-2 md:px-8">
-      <div>
-        {product.imageUrls[0] && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={product.imageUrls[0]}
-            alt=""
-            className="mb-4 h-56 w-full rounded-[var(--cao-radius-lg)] object-cover"
-          />
-        )}
-        <h1 className="font-[family-name:var(--tenant-font-display)] text-3xl">
-          {product.name}
-        </h1>
-        <p className="mt-2 text-[var(--tenant-ink-muted)]">
-          {product.description}
-        </p>
-        <p className="mt-4 text-xl font-medium">
-          {formatUsdFromCents(product.priceCents)}
-        </p>
-        <p className="mt-4 text-sm">
-          {interpolate(casaLimonCopy.planBody, {
-            cadence: cadences.find((c) => c.code === cadence)?.labelEs ?? "",
-          })}
-        </p>
-        <p className="mt-2 text-sm text-[var(--tenant-ink-muted)]">
-          {casaLimonCopy.diaspora}
-        </p>
-      </div>
-      <form onSubmit={(e) => void submit(e)} className="grid gap-4">
-        <div className="grid gap-2">
-          <div className="flex gap-2">
-            <Button
-              type="button"
-              variant={isGift ? "shop" : "outline"}
-              onClick={() => setIsGift(true)}
-            >
-              {casaLimonCopy.gift}
-            </Button>
-            <Button
-              type="button"
-              variant={!isGift ? "shop" : "outline"}
-              onClick={() => setIsGift(false)}
-            >
-              {casaLimonCopy.self}
-            </Button>
-          </div>
-          {isGift && (
-            <p className="text-sm text-[var(--tenant-ink-muted)]">
-              {casaLimonCopy.giftBody}
-            </p>
+    <>
+      <SubscribeTracking
+        slug={tenant.slug}
+        planCode={product.sku}
+        tier={product.tier}
+        cadence={cadence}
+        isGift={isGift}
+        addressStarted={addressLine1.trim().length > 3}
+      />
+      <div className="mx-auto grid w-full max-w-5xl gap-8 px-4 py-8 md:grid-cols-2 md:px-8">
+        <div>
+          {product.imageUrls[0] && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={product.imageUrls[0]}
+              alt=""
+              className="mb-4 h-56 w-full rounded-[var(--cao-radius-lg)] object-cover"
+            />
           )}
-        </div>
-        <fieldset className="grid gap-2">
-          <legend className="text-sm font-medium">Cada cuánto</legend>
-          {cadences.map((c) => (
-            <label key={c.code} className="flex items-center gap-2 text-sm">
-              <input
-                type="radio"
-                name="cadence"
-                checked={cadence === c.code}
-                onChange={() => setCadence(c.code)}
-              />
-              {interpolate(casaLimonCopy.cadence, { cadence: c.labelEs })}
-            </label>
-          ))}
-        </fieldset>
-        <Field label="Tu nombre (quien paga)">
-          <Input value={payerName} onChange={(e) => setPayerName(e.target.value)} required />
-        </Field>
-        <Field label="Tu email">
-          <Input type="email" value={payerEmail} onChange={(e) => setPayerEmail(e.target.value)} />
-        </Field>
-        <Field label="Tu teléfono">
-          <Input value={payerPhone} onChange={(e) => setPayerPhone(e.target.value)} />
-        </Field>
-        {isGift && (
-          <>
-            <Field label={casaLimonCopy.recipient}>
-              <Input
-                value={recipientName}
-                onChange={(e) => setRecipientName(e.target.value)}
-                required
-              />
-            </Field>
-            <Field label="Teléfono de quien recibe">
-              <Input
-                value={recipientPhone}
-                onChange={(e) => setRecipientPhone(e.target.value)}
-              />
-            </Field>
-          </>
-        )}
-        <Field label={casaLimonCopy.address}>
-          <Input
-            value={addressLine1}
-            onChange={(e) => setAddressLine1(e.target.value)}
-            required
-          />
-        </Field>
-        <Field label="Colonia">
-          <Input value={colonia} onChange={(e) => setColonia(e.target.value)} />
-        </Field>
-        <Field label="Zona">
-          <select
-            className="h-10 w-full rounded-[var(--cao-radius-md)] border border-[var(--tenant-border)] bg-[var(--tenant-color-bg-elevated)] px-3"
-            value={zoneId}
-            onChange={(e) => setZoneId(e.target.value)}
-          >
-            <option value="">Elegí zona</option>
-            {(zones ?? []).map((zone) => (
-              <option key={zone._id} value={zone._id}>
-                {zone.name}
-                {zone.included ? " (incluida)" : ` (+$${zone.surchargeCents / 100})`}
-              </option>
-            ))}
-          </select>
-          <p className="mt-1 text-xs text-[var(--tenant-ink-muted)]">
-            {casaLimonCopy.zoneHelp}
+          <h1 className="font-[family-name:var(--tenant-font-display)] text-3xl">
+            {product.name}
+          </h1>
+          <p className="mt-2 text-[var(--tenant-ink-muted)]">
+            {product.description}
           </p>
-        </Field>
-        <Field label={casaLimonCopy.note}>
-          <Textarea
-            value={deliveryNotes}
-            onChange={(e) => setDeliveryNotes(e.target.value)}
-          />
-        </Field>
-        <Field label="Mensaje en la tarjeta (máx. 200)">
-          <Textarea
-            maxLength={200}
-            value={cardMessage}
-            onChange={(e) => setCardMessage(e.target.value)}
-          />
-        </Field>
-        {(addOns ?? []).length > 0 && (
+          <p className="mt-4 text-xl font-medium">
+            {formatUsdFromCents(product.priceCents)}
+          </p>
+          <p className="mt-4 text-sm">
+            {interpolate(casaLimonCopy.planBody, {
+              cadence: cadences.find((c) => c.code === cadence)?.labelEs ?? "",
+            })}
+          </p>
+          <p className="mt-2 text-sm text-[var(--tenant-ink-muted)]">
+            {casaLimonCopy.diaspora}
+          </p>
+        </div>
+        <form onSubmit={(e) => void submit(e)} className="grid gap-4">
+          <div className="grid gap-2">
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant={isGift ? "shop" : "outline"}
+                onClick={() => setIsGift(true)}
+              >
+                {casaLimonCopy.gift}
+              </Button>
+              <Button
+                type="button"
+                variant={!isGift ? "shop" : "outline"}
+                onClick={() => setIsGift(false)}
+              >
+                {casaLimonCopy.self}
+              </Button>
+            </div>
+            {isGift && (
+              <p className="text-sm text-[var(--tenant-ink-muted)]">
+                {casaLimonCopy.giftBody}
+              </p>
+            )}
+          </div>
           <fieldset className="grid gap-2">
-            <legend className="text-sm font-medium">Extras</legend>
-            {addOns?.map((addOn) => (
-              <label key={addOn._id} className="flex items-center gap-2 text-sm">
+            <legend className="text-sm font-medium">Cada cuánto</legend>
+            {cadences.map((c) => (
+              <label key={c.code} className="flex items-center gap-2 text-sm">
                 <input
-                  type="checkbox"
-                  checked={selectedAddOns.includes(addOn._id)}
-                  onChange={(e) => {
-                    setSelectedAddOns((current) =>
-                      e.target.checked
-                        ? [...current, addOn._id]
-                        : current.filter((id) => id !== addOn._id),
-                    );
-                  }}
+                  type="radio"
+                  name="cadence"
+                  checked={cadence === c.code}
+                  onChange={() => setCadence(c.code)}
                 />
-                {addOn.name} · {formatUsdFromCents(addOn.priceCents)}
+                {interpolate(casaLimonCopy.cadence, { cadence: c.labelEs })}
               </label>
             ))}
           </fieldset>
-        )}
-        <div className="rounded-[var(--cao-radius-md)] border border-dashed border-[var(--tenant-border)] p-3 text-sm">
-          <p className="font-medium">{casaLimonCopy.paySoon}</p>
-          <p className="mt-1 text-[var(--tenant-ink-muted)]">
-            {casaLimonCopy.payOutside}
+          <Field label="Tu nombre (quien paga)">
+            <Input
+              value={payerName}
+              onChange={(e) => setPayerName(e.target.value)}
+              required
+            />
+          </Field>
+          <Field label="Tu email">
+            <Input
+              type="email"
+              value={payerEmail}
+              onChange={(e) => setPayerEmail(e.target.value)}
+            />
+          </Field>
+          <Field label="Tu teléfono">
+            <Input
+              value={payerPhone}
+              onChange={(e) => setPayerPhone(e.target.value)}
+            />
+          </Field>
+          {isGift && (
+            <>
+              <Field label={casaLimonCopy.recipient}>
+                <Input
+                  value={recipientName}
+                  onChange={(e) => setRecipientName(e.target.value)}
+                  required
+                />
+              </Field>
+              <Field label="Teléfono de quien recibe">
+                <Input
+                  value={recipientPhone}
+                  onChange={(e) => setRecipientPhone(e.target.value)}
+                />
+              </Field>
+            </>
+          )}
+          <Field label={casaLimonCopy.address}>
+            <Input
+              value={addressLine1}
+              onChange={(e) => setAddressLine1(e.target.value)}
+              required
+            />
+          </Field>
+          <Field label="Colonia">
+            <Input
+              value={colonia}
+              onChange={(e) => setColonia(e.target.value)}
+            />
+          </Field>
+          <Field label="Zona">
+            <select
+              className="h-10 w-full rounded-[var(--cao-radius-md)] border border-[var(--tenant-border)] bg-[var(--tenant-color-bg-elevated)] px-3"
+              value={zoneId}
+              onChange={(e) => setZoneId(e.target.value)}
+            >
+              <option value="">Elegí zona</option>
+              {(zones ?? []).map((zone) => (
+                <option key={zone._id} value={zone._id}>
+                  {zone.name}
+                  {zone.included
+                    ? " (incluida)"
+                    : ` (+$${zone.surchargeCents / 100})`}
+                </option>
+              ))}
+            </select>
+            <p className="mt-1 text-xs text-[var(--tenant-ink-muted)]">
+              {casaLimonCopy.zoneHelp}
+            </p>
+          </Field>
+          <Field label={casaLimonCopy.note}>
+            <Textarea
+              value={deliveryNotes}
+              onChange={(e) => setDeliveryNotes(e.target.value)}
+            />
+          </Field>
+          <Field label="Mensaje en la tarjeta (máx. 200)">
+            <Textarea
+              maxLength={200}
+              value={cardMessage}
+              onChange={(e) => setCardMessage(e.target.value)}
+            />
+          </Field>
+          {(addOns ?? []).length > 0 && (
+            <fieldset className="grid gap-2">
+              <legend className="text-sm font-medium">Extras</legend>
+              {addOns?.map((addOn) => (
+                <label
+                  key={addOn._id}
+                  className="flex items-center gap-2 text-sm"
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedAddOns.includes(addOn._id)}
+                    onChange={(e) => {
+                      setSelectedAddOns((current) =>
+                        e.target.checked
+                          ? [...current, addOn._id]
+                          : current.filter((id) => id !== addOn._id),
+                      );
+                    }}
+                  />
+                  {addOn.name} · {formatUsdFromCents(addOn.priceCents)}
+                </label>
+              ))}
+            </fieldset>
+          )}
+          <div className="rounded-[var(--cao-radius-md)] border border-dashed border-[var(--tenant-border)] p-3 text-sm">
+            <p className="font-medium">{casaLimonCopy.paySoon}</p>
+            <p className="mt-1 text-[var(--tenant-ink-muted)]">
+              {casaLimonCopy.payOutside}
+            </p>
+            <p className="mt-3 text-xs uppercase tracking-wide">Próximamente</p>
+            <button
+              type="button"
+              disabled
+              className="mt-2 h-10 w-full rounded-[var(--cao-radius-md)] bg-black/10 text-sm opacity-60"
+            >
+              Pagar en la app — próximamente
+            </button>
+          </div>
+          <p className="text-lg font-medium">
+            Total estimado: {formatUsdFromCents(total)}
           </p>
-          <p className="mt-3 text-xs uppercase tracking-wide">Próximamente</p>
-          <button
-            type="button"
-            disabled
-            className="mt-2 h-10 w-full rounded-[var(--cao-radius-md)] bg-black/10 text-sm opacity-60"
-          >
-            Pagar en la app — próximamente
-          </button>
-        </div>
-        <p className="text-lg font-medium">Total estimado: {formatUsdFromCents(total)}</p>
-        {error && <p className="text-sm text-[var(--cao-color-error)]">{error}</p>}
-        <Button type="submit" variant="shop" size="lg" disabled={busy}>
-          {busy ? "Guardando…" : casaLimonCopy.choose}
-        </Button>
-      </form>
-    </div>
+          {error && (
+            <p className="text-sm text-[var(--cao-color-error)]">{error}</p>
+          )}
+          <Button type="submit" variant="shop" size="lg" disabled={busy}>
+            {busy ? "Guardando…" : casaLimonCopy.choose}
+          </Button>
+        </form>
+      </div>
+    </>
   );
+}
+
+function SubscribeTracking({
+  slug,
+  planCode,
+  tier,
+  cadence,
+  isGift,
+  addressStarted,
+}: {
+  slug: string;
+  planCode: string;
+  tier?: string;
+  cadence: string;
+  isGift: boolean;
+  addressStarted: boolean;
+}) {
+  const ctx = analyticsContext(slug);
+  const gift = useRef(false);
+  const address = useRef(false);
+
+  useEffect(() => {
+    track("view_plan", { ...ctx, plan_code: planCode, cadence, tier });
+    track("subscribe_start", {
+      ...ctx,
+      plan_code: planCode,
+      cadence,
+      is_gift: isGift,
+    });
+    track("subscribe_step", { ...ctx, step: "plan" });
+    track("checkout_coming_soon", {
+      ...ctx,
+      plan_code: planCode,
+      is_gift: isGift,
+    });
+    // enter-flow once per plan page
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug, planCode]);
+
+  useEffect(() => {
+    if (!isGift || gift.current) return;
+    gift.current = true;
+    track("start_gift", { ...ctx, plan_code: planCode });
+    track("subscribe_step", { ...ctx, step: "gift" });
+  }, [ctx, isGift, planCode]);
+
+  useEffect(() => {
+    if (!addressStarted || address.current) return;
+    address.current = true;
+    track("subscribe_step", { ...ctx, step: "address" });
+  }, [addressStarted, ctx, planCode]);
+
+  return null;
 }
 
 function Field({

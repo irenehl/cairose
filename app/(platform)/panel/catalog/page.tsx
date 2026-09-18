@@ -7,6 +7,7 @@ import {
   usePanelProducts,
   usePanelTenant,
 } from "@/lib/hooks";
+import { analyticsContext, track } from "@/lib/analytics";
 import type { Product, TierCode } from "@/lib/types";
 import { formatUsdFromCents } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -123,6 +124,20 @@ export default function CatalogPage() {
           tier: draft.tier || undefined,
           forSubscription: draft.forSubscription,
           forOccasion: draft.forOccasion,
+        });
+      }
+      const sku =
+        editing?.sku ??
+        (draft.sku || draft.name.toLowerCase().replace(/\s+/g, "-"));
+      track("panel_edit_price", {
+        ...analyticsContext(tenant.slug),
+        sku,
+        tier: draft.tier || undefined,
+      });
+      if (draft.forSubscription) {
+        track("panel_edit_cadence", {
+          ...analyticsContext(tenant.slug),
+          cadence: "weekly",
         });
       }
       setOpen(false);

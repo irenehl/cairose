@@ -77,10 +77,38 @@ For the Insights bot. **Do not block the product cut on Clarity.** The project I
 |------|--------|
 | Env var | `NEXT_PUBLIC_CLARITY_ID` (stub in `.env.example`, empty by default) |
 | Script | `components/clarity.tsx` — loads on storefront **and** florist panel via root layout **only if** the env var is non-empty |
-| Custom event names | **TBD** — tracking plan later. Do not invent `clarity()` event names yet |
+| Helper | `lib/analytics.ts` — fires named events when the ID is set; **no-ops** if unset |
 | Until ID exists | Leave the var empty; the app must run without Clarity |
 
 Daniela pastes the real project ID into `.env.local` / host env when the public URL is ready.
+
+Min props on every event: `tenant_id` (slug) + `is_demo` (`true` when slug is `casa-limon`). No PII.
+
+### Storefront events (B2C)
+
+| Event | When |
+|-------|------|
+| `view_home` | Casa Limón home |
+| `view_plan` | Plan list or a plan page |
+| `subscribe_start` | Enters subscribe flow |
+| `start_gift` | “Enviar a alguien más” |
+| `subscribe_step` | Step `plan` \| `gift` \| `address` \| `checkout` |
+| `checkout_coming_soon` | Payment coming-soon banner |
+| `skip_intent` | Skip stub |
+| `pause_intent` | Pause stub |
+| `wa_handoff` | WhatsApp CTA (`reason`: `skip` \| `pause` \| `checkout` \| `support`) |
+
+### Panel events (B2B)
+
+| Event | When |
+|-------|------|
+| `panel_view_plans` | `/panel/subscriptions` |
+| `panel_view_subscribers` | Same list of subscriber plans |
+| `panel_view_orders` | `/panel/orders` |
+| `panel_edit_price` | Florist saves a catalog price |
+| `panel_edit_cadence` | Florist saves a subscription SKU (cadence UI is still the seed defaults) |
+
+Funnels v0: `view_plan` → `subscribe_start` → `subscribe_step(address)` → `checkout_coming_soon`. Gift adds `start_gift`. Retention: `skip_intent` / `pause_intent` (+ `wa_handoff`).
 
 ## Convex
 

@@ -3,7 +3,7 @@ import Script from "next/script";
 /**
  * Microsoft Clarity stub loader.
  * Env: NEXT_PUBLIC_CLARITY_ID (empty = do not load; no fake ID).
- * Custom event names: TBD — tracking plan later. Do not invent events here.
+ * Named product events live in lib/analytics.ts (tracking plan v0).
  */
 export function ClarityScript() {
   const id = process.env.NEXT_PUBLIC_CLARITY_ID?.trim();

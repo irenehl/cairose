@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cairose | Landing A</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=sora@400,600&f[]=inter@400,500,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-marfil: #F4EFE6;
+      --color-elevated: #FFFBF5;
+      --color-ink: #1A1714;
+      --color-muted: #5E564E;
+      --color-oliva: #2F4A3C;
+      --color-teja: #B85C38;
+      --color-border: #E0D5C8;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-marfil);
+      color: var(--color-ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .garamond {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .sora {
+      font-family: 'Sora', sans-serif;
+    }
+    .grain {
+      background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.04%22/%3E%3C/svg%3E');
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen relative overflow-x-hidden grain">
+    
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-[#F4EFE6]/80 backdrop-blur-md border-b border-[#E0D5C8]/50 transition-all duration-300">
+      <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="sora text-lg tracking-tight text-[#1A1714] lowercase">cairose</a>
+        <nav class="hidden md:flex gap-8 items-center">
+          <a href="/para-ti" class="text-[#5E564E] text-sm hover:text-[#1A1714] transition-colors">Para ti</a>
+          <a href="#demo" class="bg-[#2F4A3C] text-[#F4EFE6] px-5 py-2.5 text-sm font-medium hover:bg-[#1A1714] transition-colors">
+            ¿cómo se vería mi marca?
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero (Full Bleed Magazine Art Direction) -->
+    <section class="relative min-h-[90vh] flex items-center pt-20">
+      <div class="absolute inset-0 z-0">
+        <!-- Authentic workshop photo replacing the layout concept -->
+        <img src="https://images.unsplash.com/photo-1596435349524-74c76037da30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Manos trabajando en mesa de floristería con papel craft y tallos" class="w-full h-full object-cover object-[65%_50%]" />
+        <!-- Editorial veil strictly for text legibility on the left, fading completely to expose the hands/work on the right -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#F4EFE6] via-[#F4EFE6]/80 to-transparent w-full md:w-[75%]"></div>
+      </div>
+      
+      <div class="relative z-10 max-w-[1440px] w-full mx-auto px-6">
+        <div class="max-w-xl md:pr-12 py-16">
+          <span class="block uppercase tracking-[0.1em] text-[#2F4A3C] text-[13px] mb-6">Para floristerías</span>
+          <h1 class="garamond text-[3.5rem] md:text-[5rem] leading-[1.05] font-bold text-[#1A1714] mb-8 tracking-tight">
+            Planes que vuelven — con <em class="text-[#B85C38] font-bold italic">tu</em> marca.
+          </h1>
+          <p class="text-[#5E564E] text-lg mb-10 max-w-sm leading-relaxed">
+            Se suma a tu WhatsApp y tu sitio. No tocamos tu vitrina de flores. Tu clienta te paga a vos.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 mb-6 items-start sm:items-center">
+            <a href="#demo" class="bg-[#2F4A3C] text-[#F4EFE6] px-8 py-4 font-medium hover:bg-[#1A1714] transition-colors">
+              ¿cómo se vería mi marca?
+            </a>
+            <a href="#como" class="text-[#1A1714] border-b border-[#1A1714] pb-0.5 hover:text-[#5E564E] hover:border-[#5E564E] transition-colors">
+              Cómo funciona
+            </a>
+          </div>
+          <p class="text-[#5E564E] text-[13px]">
+            Sin % del pedido · te lo contamos en la demo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banda Oliva -->
+    <section class="bg-[#2F4A3C] w-full py-12 px-6">
+      <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        <h2 class="garamond text-3xl md:text-4xl font-semibold text-[#F4EFE6]">
+          Tu taller se queda. Nosotras sumamos el plan.
+        </h2>
+        <div class="flex gap-4 flex-wrap">
+          <span class="border border-[#F4EFE6]/35 text-[#F4EFE6] px-5 py-2 text-[13px] uppercase tracking-wide">WhatsApp</span>
+          <span class="border border-[#F4EFE6]/35 text-[#F4EFE6] px-5 py-2 text-[13px] uppercase tracking-wide">Tu sitio</span>
+          <span class="border border-[#F4EFE6]/35 text-[#F4EFE6] px-5 py-2 text-[13px] uppercase tracking-wide">Tu marca</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Escenas Magazine (Irregular Columns) -->
+    <section class="py-32 max-w-[1440px] mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-16 md:gap-12">
+        <article class="md:mt-0">
+          <h3 class="garamond text-2xl font-bold text-[#1A1714] mb-4 border-b border-[#E0D5C8] pb-4 inline-block">
+            Para hoy ya
+          </h3>
+          <p class="text-[#5E564E] text-lg leading-relaxed">
+            Te escriben a las tres por un detalle urgente.
+          </p>
+        </article>
+        <article class="md:mt-16">
+          <h3 class="garamond text-2xl font-bold text-[#1A1714] mb-4 border-b border-[#E0D5C8] pb-4 inline-block">
+            Chat eterno
+          </h3>
+          <p class="text-[#5E564E] text-lg leading-relaxed">
+            Foto, precio y colonia en un hilo sin fin.
+          </p>
+        </article>
+        <article class="md:mt-32">
+          <h3 class="garamond text-2xl font-bold text-[#1A1714] mb-4 border-b border-[#E0D5C8] pb-4 inline-block">
+            Tu nombre
+          </h3>
+          <p class="text-[#5E564E] text-lg leading-relaxed">
+            Si el link no es tuyo, no vuelven a vos.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Cómo Funciona (Paper Column) -->
+    <section id="como" class="bg-[#FFFBF5] py-32 border-y border-[#E0D5C8]">
+      <div class="max-w-[40rem] mx-auto px-6 space-y-24">
+        <div class="flex gap-10 items-start">
+          <span class="garamond text-5xl font-bold text-[#B85C38] leading-none shrink-0">01</span>
+          <div>
+            <h3 class="garamond text-3xl font-bold text-[#1A1714] mb-3">Tu marca se queda</h3>
+            <p class="text-[#5E564E] text-lg leading-relaxed">
+              Logo, colores, tu catálogo. Tu web de flores sigue siendo tuya.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-10 items-start">
+          <span class="garamond text-5xl font-bold text-[#B85C38] leading-none shrink-0">02</span>
+          <div>
+            <h3 class="garamond text-3xl font-bold text-[#1A1714] mb-3">Planes bajo tu marca</h3>
+            <p class="text-[#5E564E] text-lg leading-relaxed">
+              Semana, quincena o mes. Ella te paga a vos.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-10 items-start">
+          <span class="garamond text-5xl font-bold text-[#B85C38] leading-none shrink-0">03</span>
+          <div>
+            <h3 class="garamond text-3xl font-bold text-[#1A1714] mb-3">Pedidos claros</h3>
+            <p class="text-[#5E564E] text-lg leading-relaxed">
+              Ves qué entregar. Cairose es la cuota del taller, no del ramo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Teaser (Paper Menu Artifact) -->
+    <section id="demo" class="py-32 max-w-[1440px] mx-auto px-6">
+      <div class="grid md:grid-cols-12 gap-16 items-center">
+        <div class="md:col-span-5 md:col-start-2">
+          <h2 class="garamond text-4xl md:text-5xl font-bold text-[#1A1714] mb-6">
+            Así se vería <em class="text-[#B85C38] italic">tu</em> marca
+          </h2>
+          <p class="text-[#5E564E] text-lg mb-10 leading-relaxed">
+            Casa Limón es inventada — un ejemplo de planes bajo una marca que no es Cairose.
+          </p>
+          <a href="#demo" class="bg-[#2F4A3C] text-[#F4EFE6] px-8 py-4 font-medium hover:bg-[#1A1714] transition-colors inline-block mb-8">
+            ¿cómo se vería mi marca?
+          </a>
+          <div class="block">
+            <a href="/para-ti" class="text-[#5E564E] hover:text-[#B85C38] border-b border-[#E0D5C8] pb-0.5 transition-colors">
+              ¿Querés un plan para vos?
+            </a>
+          </div>
+        </div>
+        
+        <div class="md:col-span-5 flex justify-center">
+          <!-- Authentic Paper Carta -->
+          <div class="bg-[#FFFBF5] p-12 md:p-16 shadow-[4px_4px_16px_rgba(47,74,60,0.05),_1px_1px_0px_rgba(47,74,60,0.1)] border border-[#E0D5C8] max-w-sm w-full -rotate-1 relative">
+            <div class="absolute inset-4 border border-[#E0D5C8] pointer-events-none"></div>
+            <div class="text-center space-y-8 relative z-10">
+              <h4 class="garamond text-3xl font-bold text-[#1A1714] tracking-widest uppercase">
+                Casa Limón
+              </h4>
+              <div class="w-8 h-px bg-[#1A1714] mx-auto"></div>
+              <div class="space-y-3">
+                <p class="text-[13px] uppercase tracking-[0.15em] text-[#1A1714]">
+                  Plan Flores Frescas
+                </p>
+                <p class="garamond text-2xl text-[#B85C38] italic font-semibold">
+                  Cada quincena
+                </p>
+              </div>
+              <div class="pt-12">
+                <p class="text-[13px] text-[#5E564E] italic">
+                  Le pagás a Casa Limón
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ & Footer -->
+    <footer class="bg-[#1A1714] text-[#F4EFE6] py-32 px-6">
+      <div class="max-w-[40rem] mx-auto">
+        
+        <div class="space-y-6 border-b border-[#5E564E]/30 pb-20 mb-20">
+          <details class="group cursor-pointer">
+            <summary class="flex justify-between items-center text-lg font-medium py-5 border-b border-[#5E564E]/30 select-none">
+              ¿Cairose vende flores?
+              <span class="text-[#B85C38] group-open:rotate-45 transition-transform duration-300 text-2xl leading-none">+</span>
+            </summary>
+            <p class="text-[#E0D5C8] pt-5 pb-3 leading-relaxed">
+              No. Vendés vos.
+            </p>
+          </details>
+          <details class="group cursor-pointer">
+            <summary class="flex justify-between items-center text-lg font-medium py-5 border-b border-[#5E564E]/30 select-none">
+              ¿Se meten en mi página de flores?
+              <span class="text-[#B85C38] group-open:rotate-45 transition-transform duration-300 text-2xl leading-none">+</span>
+            </summary>
+            <p class="text-[#E0D5C8] pt-5 pb-3 leading-relaxed">
+              No. Solo sumamos planes bajo tu marca.
+            </p>
+          </details>
+          <details class="group cursor-pointer">
+            <summary class="flex justify-between items-center text-lg font-medium py-5 border-b border-[#5E564E]/30 select-none">
+              ¿Cobran a mi clienta?
+              <span class="text-[#B85C38] group-open:rotate-45 transition-transform duration-300 text-2xl leading-none">+</span>
+            </summary>
+            <p class="text-[#E0D5C8] pt-5 pb-3 leading-relaxed">
+              No. Sin % del pedido.
+            </p>
+          </details>
+          <details class="group cursor-pointer">
+            <summary class="flex justify-between items-center text-lg font-medium py-5 border-b border-[#5E564E]/30 select-none">
+              ¿Cuánto cuesta?
+              <span class="text-[#B85C38] group-open:rotate-45 transition-transform duration-300 text-2xl leading-none">+</span>
+            </summary>
+            <p class="text-[#E0D5C8] pt-5 pb-3 leading-relaxed">
+              Te lo contamos en la demo.
+            </p>
+          </details>
+        </div>
+
+        <div class="text-center space-y-10">
+          <h2 class="garamond text-4xl md:text-5xl font-bold">
+            El detalle bajo tu marca.
+          </h2>
+          <a href="#demo" class="bg-[#2F4A3C] text-[#F4EFE6] px-10 py-4 font-medium hover:bg-[#F4EFE6] hover:text-[#1A1714] transition-colors inline-block">
+            ¿cómo se vería mi marca?
+          </a>
+        </div>
+        
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

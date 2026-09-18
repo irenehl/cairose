@@ -1,0 +1,20 @@
+{
+  "projectId": "e00b1173-e8ea-444d-a85f-beae8a916f20",
+  "nodes": [
+    {
+      "id": "716e3678-1308-45a7-a1c1-e2cc600dcfde",
+      "title": "Cairose | Landing A v2",
+      "description": "Full redesign applying the florist atelier magazine art direction: full-bleed photographic hero, Cormorant Garamond typography, and irregular magazine columns.",
+      "screenshot": {
+        "url": "https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/screenshots/drafts/716e3678-1308-45a7-a1c1-e2cc600dcfde/1789751266723.png",
+        "width": 800,
+        "height": 600
+      },
+      "parentDraftId": null,
+      "iterationDepth": 1,
+      "previewUrl": "https://p.superdesign.dev/draft/716e3678-1308-45a7-a1c1-e2cc600dcfde",
+      "createdAt": "2026-09-18T17:05:29.879Z",
+      "currentVersion": 2
+    }
+  ]
+}

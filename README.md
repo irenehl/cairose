@@ -4,18 +4,35 @@ White-label facilitator for florists. **Cairose never sells flowers.** Florists 
 
 This repo is a working slice: florist panel (Cairose chrome) + tenant storefront (florist brand). The showcase tenant is the fictional florist **Casa Limón**. URL slug is locked to **`casa-limon` only**. It is not Memories, Haru, Camelot, Bugambilias, Amelia, or Cairose-as-florist.
 
-## Create the Origin repo (Daniela)
+## Source of truth (GitHub)
 
-This cloud session is still on a temporary project. **The Create repo pill is still needed** — there is no `https://cursor.com/codebase/...` URL yet.
+Publish path is **GitHub first**. Do not create an Origin repo.
 
-1. Open this agent thread in Cursor.
-2. Click the **Create repo** pill (top of the agent / project view).
-3. Name the private Origin repo **`cairose`** if Origin allows that name; otherwise accept the minted name and keep `package.json` / this README titled Cairose.
-4. Keep the repo **private**.
-5. After Origin finishes, the codebase URL looks like `https://cursor.com/codebase/<your-repo>` — paste that into Slack / Insights once it exists.
-6. Clarity stays empty (`NEXT_PUBLIC_CLARITY_ID`) until that public/shareable URL exists.
+- Private repo: [https://github.com/irenehl/cairose](https://github.com/irenehl/cairose)
+- Default branch: `main`
 
-Do not invent a codebase URL or a Clarity project ID before those exist.
+If this cloud session cannot authenticate to GitHub, create the empty **private** repo as `irenehl/cairose`, then either push `main` from a machine that has access or add a Cloud Agent secret named `GH_TOKEN` / `GITHUB_TOKEN` (`repo` scope) and ask the agent to push.
+
+### Vercel preview (next)
+
+After the GitHub repo exists: Import **that** repo in the Vercel dashboard (`New Project` → GitHub → `irenehl/cairose`). Do not invent a `*.vercel.app` URL before Vercel creates one.
+
+Preview env (placeholders are OK; Clarity stays empty):
+
+| Name | Preview value |
+|------|----------------|
+| `NEXT_PUBLIC_CONVEX_URL` | `https://placeholder.convex.cloud` |
+| `CONVEX_DEPLOYMENT` | *(empty)* |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | `pk_test_placeholder` |
+| `CLERK_SECRET_KEY` | `sk_test_placeholder` |
+| `NEXT_PUBLIC_CLERK_SIGN_IN_URL` | `/sign-in` |
+| `NEXT_PUBLIC_CLERK_SIGN_UP_URL` | `/sign-up` |
+| `NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` | `/panel` |
+| `NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` | `/panel` |
+| `PLATFORM_ROOT_DOMAIN` | `cairose.local` (path `/t/casa-limon` still works on the Vercel host) |
+| `NEXT_PUBLIC_CLARITY_ID` | *(empty — do not invent an ID)* |
+
+Local seed fallback runs without real Clerk/Convex. Sign-in UI and live Convex need real keys later. Clarity stays empty until there is a public URL.
 
 ## Stack
 

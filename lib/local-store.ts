@@ -352,6 +352,7 @@ class LocalStore {
 
     const nextSub = { ...subscription };
     let addresses = this.state.addresses;
+    let deliveries = this.state.deliveries;
 
     if (input.type === "pause") {
       if (subscription.status !== "active") {
@@ -374,6 +375,19 @@ class LocalStore {
       }
       nextSub.nextDeliveryAt =
         subscription.nextDeliveryAt + subscription.intervalDays * DAY_MS;
+      const upcoming = deliveries
+        .filter(
+          (d) =>
+            d.subscriptionId === subscription._id && d.status === "scheduled",
+        )
+        .sort((a, b) => a.scheduledFor - b.scheduledFor)[0];
+      if (upcoming) {
+        deliveries = deliveries.map((d) =>
+          d._id === upcoming._id
+            ? { ...d, scheduledFor: nextSub.nextDeliveryAt }
+            : d,
+        );
+      }
     }
     if (input.type === "change_cadence") {
       if (!input.cadence) throw new Error("Falta la nueva cadencia");
@@ -407,6 +421,7 @@ class LocalStore {
     this.commit({
       ...this.state,
       addresses,
+      deliveries,
       subscriptions: this.state.subscriptions.map((s) =>
         s._id === nextSub._id ? nextSub : s,
       ),

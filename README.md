@@ -51,9 +51,7 @@ Subdomain (optional): add to `/etc/hosts`:
 127.0.0.1 cairose.local casa-limon.cairose.local
 ```
 
-Then `http://casa-limon.cairose.local:43147` rewrites to `/t/casa-limon` via `proxy.ts` (`PLATFORM_ROOT_DOMAIN=cairose.local`).
-
-`/t/demo-amss` briefly redirects to `/t/casa-limon`. Seed and primary routes use **`casa-limon` only**.
+Then `http://casa-limon.cairose.local:43147` rewrites to `/t/casa-limon` via `proxy.ts` (`PLATFORM_ROOT_DOMAIN=cairose.local`). The only showcase slug is **`casa-limon`**.
 
 ## Environment
 

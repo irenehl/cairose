@@ -278,10 +278,21 @@ export const recordEvent = mutation({
       if (subscription.status !== "active") {
         throw new Error("Solo se puede saltar un plan activo");
       }
-      await ctx.db.patch(subscription._id, {
-        nextDeliveryAt:
-          subscription.nextDeliveryAt + subscription.intervalDays * DAY_MS,
-      });
+      const nextDeliveryAt =
+        subscription.nextDeliveryAt + subscription.intervalDays * DAY_MS;
+      await ctx.db.patch(subscription._id, { nextDeliveryAt });
+      const deliveries = await ctx.db
+        .query("deliveries")
+        .withIndex("by_subscription", (q) =>
+          q.eq("subscriptionId", subscription._id),
+        )
+        .collect();
+      const upcoming = deliveries
+        .filter((d) => d.status === "scheduled")
+        .sort((a, b) => a.scheduledFor - b.scheduledFor)[0];
+      if (upcoming) {
+        await ctx.db.patch(upcoming._id, { scheduledFor: nextDeliveryAt });
+      }
     }
 
     if (args.type === "change_cadence") {

@@ -24,10 +24,8 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const rawSlug = tenantSlugFromHost(request.headers.get("host") ?? "");
-  if (!rawSlug) return NextResponse.next();
-  // Product lock: showcase slug is casa-limon. Brief alias for the old demo-amss host.
-  const slug = rawSlug === "demo-amss" ? "casa-limon" : rawSlug;
+  const slug = tenantSlugFromHost(request.headers.get("host") ?? "");
+  if (!slug) return NextResponse.next();
 
   // Already on a path-based tenant route — leave it alone.
   if (pathname === `/t/${slug}` || pathname.startsWith(`/t/${slug}/`)) {

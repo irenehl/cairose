@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { LandingHeader } from "@/components/marketing/landing-header";
 import { StorefrontPreviewFrame } from "@/components/marketing/storefront-preview-frame";
 import { CairoseWordmark } from "@/components/marketing/wordmark";
 import {
@@ -8,6 +9,9 @@ import {
   SIGN_UP_HREF,
   marketingCopy,
 } from "@/lib/marketing-copy";
+
+const FOOTER_LINK_CLASS =
+  "text-[var(--cao-color-ink-muted)] hover:text-[var(--cao-color-primary)] motion-safe:transition-colors";
 
 const HOW_HREF = `#${marketingCopy.how.id}`;
 const DEMO_HREF = `#${marketingCopy.demo.id}`;
@@ -50,28 +54,7 @@ export function LandingPage() {
         <div className="absolute top-16 right-1/3 h-24 w-24 rounded-full bg-[var(--cao-color-sun)]/40 blur-2xl" />
       </div>
 
-      <header className="relative z-10 border-b border-[var(--cao-color-border)]/70 bg-[var(--cao-color-bg)]/80 backdrop-blur-sm">
-        <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4">
-          <CairoseWordmark />
-          <nav className="flex items-center gap-2 sm:gap-4">
-            <Link
-              href={HOW_HREF}
-              className="hidden text-sm text-[var(--cao-color-ink-muted)] hover:text-[var(--cao-color-ink)] sm:inline"
-            >
-              {copy.nav.how}
-            </Link>
-            <Link
-              href={DEMO_HREF}
-              className="hidden text-sm text-[var(--cao-color-ink-muted)] hover:text-[var(--cao-color-ink)] sm:inline"
-            >
-              {copy.nav.demo}
-            </Link>
-            <Button asChild variant="ghost" size="sm">
-              <Link href={SIGN_UP_HREF}>{copy.nav.signup}</Link>
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <LandingHeader />
 
       <main className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col">
         <section className="flex flex-col gap-6 px-5 pt-10 pb-16 sm:pt-16">
@@ -272,9 +255,13 @@ export function LandingPage() {
             </p>
           </div>
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            <Link href={HOW_HREF}>{copy.footer.how}</Link>
-            <Link href={DEMO_HREF}>{copy.footer.demo}</Link>
-            <Link href={SIGN_UP_HREF} className="underline-offset-4 hover:underline">
+            <Link href={HOW_HREF} className={FOOTER_LINK_CLASS}>
+              {copy.footer.how}
+            </Link>
+            <Link href={DEMO_HREF} className={FOOTER_LINK_CLASS}>
+              {copy.footer.demo}
+            </Link>
+            <Link href={SIGN_UP_HREF} className={FOOTER_LINK_CLASS}>
               {copy.footer.signup}
             </Link>
           </nav>

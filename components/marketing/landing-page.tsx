@@ -44,7 +44,7 @@ export function LandingPage() {
   const copy = marketingCopy;
 
   return (
-    <div className="relative flex min-h-full flex-1 flex-col overflow-x-hidden">
+    <div className="relative flex min-h-full flex-1 flex-col overflow-x-clip">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] overflow-hidden"

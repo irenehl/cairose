@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "convex/react";
 import { useMemo, useSyncExternalStore } from "react";
 import { api } from "../convex/_generated/api";
 import type { Id } from "../convex/_generated/dataModel";
-import { isConvexConfigured } from "./env";
+import { isConvexConfigured, isPanelBackendLive } from "./env";
 import { localStore } from "./local-store";
 import { CADENCES, type CadenceCode } from "./seed-data";
 import type {
@@ -119,7 +119,7 @@ export const usePublicProducts = isConvexConfigured()
   ? useConvexProducts
   : useLocalProducts;
 
-export const usePanelProducts = isConvexConfigured()
+export const usePanelProducts = isPanelBackendLive()
   ? useConvexProductsAll
   : useLocalProductsAll;
 
@@ -166,7 +166,7 @@ function useConvexPanelTenant(): Tenant | null | undefined {
   return useQuery(api.tenants.getMine, {}) as Tenant | null | undefined;
 }
 
-export const usePanelTenant = isConvexConfigured()
+export const usePanelTenant = isPanelBackendLive()
   ? useConvexPanelTenant
   : useLocalPanelTenant;
 
@@ -295,7 +295,7 @@ function useConvexPanelSubscriptions(
   ) as PanelSubscriptionRow[] | undefined;
 }
 
-export const usePanelSubscriptions = isConvexConfigured()
+export const usePanelSubscriptions = isPanelBackendLive()
   ? useConvexPanelSubscriptions
   : useLocalPanelSubscriptions;
 
@@ -335,7 +335,7 @@ function useConvexPanelDeliveries(
   ) as PanelDeliveryRow[] | undefined;
 }
 
-export const usePanelDeliveries = isConvexConfigured()
+export const usePanelDeliveries = isPanelBackendLive()
   ? useConvexPanelDeliveries
   : useLocalPanelDeliveries;
 
@@ -506,7 +506,7 @@ function useConvexPanelActions() {
   };
 }
 
-export const usePanelActions = isConvexConfigured()
+export const usePanelActions = isPanelBackendLive()
   ? useConvexPanelActions
   : useLocalPanelActions;
 

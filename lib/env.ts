@@ -23,3 +23,8 @@ export function isConvexConfigured(): boolean {
 export function platformRootDomain(): string {
   return process.env.PLATFORM_ROOT_DOMAIN ?? "cairose.local";
 }
+
+/** Panel mutations/queries that require Clerk membership. */
+export function isPanelBackendLive(): boolean {
+  return isConvexConfigured() && isClerkConfigured();
+}

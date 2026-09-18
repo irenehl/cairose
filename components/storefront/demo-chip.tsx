@@ -36,15 +36,17 @@ export function DemoChip() {
   if (!visible) return null;
 
   return (
-    <div className="flex items-center justify-between gap-3 px-4 py-2 text-xs text-[var(--tenant-ink-muted)] md:px-8">
-      <p>{casaLimonCopy.demoChip}</p>
-      <button
-        type="button"
-        className="shrink-0 rounded-full border border-[var(--tenant-border)] px-2 py-0.5 hover:bg-[var(--tenant-color-bg-elevated)]"
-        onClick={dismiss}
-      >
-        {casaLimonCopy.demoChipDismiss}
-      </button>
+    <div className="px-4 pb-1 md:px-8">
+      <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-[var(--tenant-border)] bg-[var(--tenant-color-bg-elevated)] px-3 py-1 text-xs text-[var(--tenant-ink-muted)]">
+        <p className="min-w-0 truncate">{casaLimonCopy.demoChip}</p>
+        <button
+          type="button"
+          className="shrink-0 rounded-full px-1.5 py-0.5 hover:bg-[var(--tenant-secondary)]"
+          onClick={dismiss}
+        >
+          {casaLimonCopy.demoChipDismiss}
+        </button>
+      </div>
     </div>
   );
 }

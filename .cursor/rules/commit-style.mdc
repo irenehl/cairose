@@ -1,0 +1,10 @@
+---
+description: Commit message style locked by Daniela
+alwaysApply: true
+---
+
+# Commit messages
+
+1. **Conventional Commits are required.** Use `feat`, `fix`, `hotfix`, `docs`, `chore`, or another appropriate type (`feat: …`, `fix: …`).
+2. Never add `Co-authored-by` for Cursor, cloud agents, Grok Bot, or the assistant.
+3. Rewrite or force-push history only when Daniela explicitly asks.

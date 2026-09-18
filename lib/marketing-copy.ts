@@ -1,119 +1,140 @@
 /**
- * Cairose B2B landing copy — locked to home-b2b-proposal-v0 + brand-home-brief.
- * Narrative: we do not replace the florist’s site — we add subscriptions/gift under their brand.
- * Do not invent CTA labels. Cairose never sells flowers.
+ * Cairose B2B landing copy — Branding v2 (landing-redo-v2).
+ * Root speaks to the florist owner. Demo teaser shows her clientas’ B2C beats.
+ * Cairose never sells flowers. SaaS-only to the florist; no take rate.
  */
 export const marketingCopy = {
   nav: {
     how: "Cómo funciona",
     demo: "Demo",
     signup: "Crear cuenta",
+    cta: "¿cómo se vería mi marca?",
+    panel: "Panel",
   },
   hero: {
     eyebrow: "Para floristerías",
-    title: "Capturá el momento justo — bajo tu marca.",
+    titleBefore: "Que no se les olvide el día — y que el detalle llegue con ",
+    titleEm: "tu",
+    titleAfter: " nombre.",
+    titleMobile: "Que no se les olvide — y que el detalle diga tu nombre.",
     subBefore:
-      "No reemplazamos tu web. Añadimos suscripciones y gift bajo ",
-    subEm: "tu",
+      "Cairose se suma a tu WhatsApp y a tu sitio: planes que vuelven. Tu clienta puede regalarse a sí misma o mandarle el detalle a otra persona — ",
+    subEm: "ella te paga a vos",
     subAfter:
-      " marca, a tu sitio o WhatsApp. Nosotras no vendemos el ramo.",
+      " (las flores). Cairose es la herramienta del taller (cuota SaaS). Nosotras no vendemos flores ni le cobramos a tu clienta.",
     ctaPrimary: "¿cómo se vería mi marca?",
     ctaHow: "Cómo funciona",
-    connect: "Conectá con tu sitio / WhatsApp",
-    micro: "Sin precio en esta página. Te lo mostramos en la demo.",
+    micro: "Sin precio acá. Primero mirá cómo se siente con tu marca.",
   },
-  problem: {
-    pains: [
-      "Olvidos: fechas que se pasan y el pedido se arma a última hora.",
-      "Chat eterno: fotos, precios y direcciones en un hilo que no termina.",
-      "Marca propia: tu clienta debería ver tu nombre, no el de otra plataforma.",
+  coexist: {
+    title: "Tu taller se queda. Nosotras sumamos el plan.",
+    line: "Seguí por WhatsApp y tu web de siempre. No te pedimos mudarte.",
+    chips: ["WhatsApp", "Tu sitio", "Tu marca"],
+  },
+  scenes: {
+    items: [
+      {
+        title: "El “para hoy ya”",
+        body: "Se les pasó el aniversario y te escriben a las tres pidiendo un detalle urgente.",
+      },
+      {
+        title: "El chat que no termina",
+        body: "Foto, precio, colonia, “¿llega sábado?” — y vos en el hilo todo el día.",
+      },
+      {
+        title: "Que no parezca de otra",
+        body: "Si el link no lleva tu nombre, no te vuelven a buscar a vos.",
+      },
     ],
-    promise:
-      "No reemplazamos tu web: añadimos suscripciones y gift (planes) bajo tu marca, a tu sitio o WhatsApp. Vos cobrás; ella ve tu nombre.",
+    closerBefore: "Armás el plan una vez. El gesto vuelve — ",
+    closerEm1: "para ella",
+    closerMid: " o ",
+    closerEm2: "para alguien más",
+    closerAfter:
+      ". Ella te paga el ramo. Vos ponés el cariño. Cairose no se queda con un % del pedido (v1).",
   },
   how: {
     id: "como-funciona",
-    title: "Cómo funciona",
+    title: "Cómo va",
     steps: [
       {
-        title: "Tu marca, tu tienda",
-        body: "Tu web y tu WhatsApp se quedan. Cairose suma logo, colores y catálogo — de la floristería, no nuestro.",
+        title: "Tu marca se queda",
+        body: "Logo, colores, tu catálogo. Tu WhatsApp no se va.",
       },
       {
         title: "Planes que vuelven",
-        body: "Suscripciones y gift: cada semana, 2 semanas o mes; para ella o para regalar.",
+        bodyBefore: "Cada semana, quincena o mes. ",
+        bodyEm1: "Para mí",
+        bodyMid: " o ",
+        bodyEm2: "para alguien más",
+        bodyAfter: ". Quien arma el plan te paga a vos.",
       },
       {
-        title: "Pedidos claros",
-        body: "Vos cobrás hoy fuera de Cairose; pagos en plataforma, próximamente.",
+        title: "Pedidos sin novela",
+        body: "Ves qué entregar. Hoy cobrás el ramo como siempre. Cairose no se queda con tu venta; el SaaS a la floristería es otro tema (y el precio no está acá).",
       },
     ],
-  },
-  includes: {
-    title: "Qué incluye",
-    cards: [
-      {
-        title: "White-label",
-        body: "Tu logo, tus colores, tu vitrina. Convive con tu sitio y WhatsApp; no los reemplaza.",
-      },
-      {
-        title: "Planes recurrentes",
-        body: "Cada semana, 2 semanas o mes.",
-      },
-      {
-        title: "Gift",
-        body: "Quien paga no tiene que ser quien recibe.",
-      },
-      {
-        title: "Panel",
-        body: "Pedidos y catálogo en un solo lugar.",
-      },
-    ],
-    note: "Skip y pausa listos para tu operación.",
   },
   demo: {
     id: "demo",
-    kicker: "Demo",
-    body: "Una vitrina de tenant — showcase ficticio. Así se vería tu marca. No es el catálogo de Cairose ni una floristería real.",
+    titleBefore: "Así se vería ",
+    titleEm: "tu",
+    titleAfter: " marca",
+    bodyBefore:
+      "Casa Limón es inventada. Mirá un plan que vuelve: ",
+    bodyEm1: "Para mí",
+    bodyMid: " o ",
+    bodyEm2: "Para alguien más",
+    bodyCadence: ", cadencia clara — y ",
+    bodyPay: "le pagás a la floristería",
+    bodyAfter: ". No es el catálogo de Cairose.",
     cta: "¿cómo se vería mi marca?",
+    beatSelf: "Para mí",
+    beatGift: "Para alguien más",
+    beatCadence: "Cada 2 semanas",
+    beatPay: "Le pagás a Casa Limón — llega a quien digas (o a vos).",
     frameBrand: "Tu marca",
     frameAddress: "tu marca",
   },
-  audience: {
-    title: "Para quién",
-    items: [
-      "Dueñas de floristería local (AMSS / LATAM).",
-      "Diáspora: paga desde fuera, entrega local.",
-    ],
+  workshop: {
+    title: "Esto es el taller.",
+    body: "Catálogo, planes, pedidos. La vitrina — y el esmero — son de la floristería.",
+    rows: ["Catálogo", "Planes", "Pedidos"],
   },
   faq: {
     title: "Preguntas frecuentes",
     items: [
       {
         q: "¿Cairose vende flores?",
-        a: "No. No reemplazamos tu web: añadimos suscripciones y gift bajo tu marca. Nosotras no vendemos el ramo — ella ve tu nombre.",
+        a: "No. Vendés vos. Nosotras armamos los planes bajo tu marca.",
       },
       {
         q: "¿Cobro en la app?",
-        a: "Próximamente; hoy cobrás vos.",
+        a: "El cobro del ramo lo seguís haciendo vos (transferencia / WhatsApp). Cairose, cuando cobre, será solo el SaaS a la floristería — no nos quedamos con un porcentaje de tus flores. Los cobros a tu clienta dentro de la app: próximamente.",
       },
       {
         q: "¿Cuánto cuesta?",
-        a: "Te lo mostramos en la demo / conversación.",
+        a: "La cuota Cairose es para la floristería (SaaS). Te lo contamos en la demo.",
+      },
+      {
+        q: "¿Cairose le cobra a mi clienta?",
+        a: "No. Ella te paga las flores a vos. Sin take rate en v1.",
+      },
+      {
+        q: "¿Hay ejemplo?",
+        a: "Casa Limón (ficticia) — mirá cómo se vería tu marca, con Para mí y Para alguien más.",
       },
     ],
-    exampleQ: "¿Hay un ejemplo?",
-    exampleA: "Sí. Mirá una vitrina de tenant (showcase ficticio) — no es el catálogo de Cairose.",
-    exampleCta: "¿cómo se vería mi marca?",
   },
   footer: {
-    claim:
-      "No reemplazamos tu web. Añadimos suscripciones y gift bajo tu marca.",
+    claim: "El detalle bajo tu marca. Cairose no vende flores.",
     signup: "Crear cuenta",
     how: "Cómo funciona",
     demo: "Demo",
+    panel: "Panel",
   },
 } as const;
 
 export const DEMO_STOREFRONT_HREF = "/t/casa-limon";
 export const SIGN_UP_HREF = "/sign-up";
+export const PANEL_HREF = "/panel";

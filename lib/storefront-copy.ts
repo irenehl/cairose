@@ -11,10 +11,12 @@ export const casaLimonCopy = {
   cta: "Ver planes",
   plansTitle: "Plan Casa Limón",
   planBody: "Flores cada {cadence}, con la frescura de siempre. Podés saltar una entrega si hace falta.",
-  gift: "Enviar a alguien más",
+  gift: "Para alguien más",
   giftBody:
     "Vos lo armás; llegan a su puerta. Ideal si estás lejos o querés sorprender.",
   self: "Para mí",
+  payFlorist:
+    "Le pagás a Casa Limón — llega a quien digas (o a vos).",
   cadence: "Entrega {cadence}",
   skip: "Podés saltar una entrega",
   choose: "Elegir este plan",

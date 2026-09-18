@@ -1,8 +1,8 @@
 import { marketingCopy } from "@/lib/marketing-copy";
 
 /**
- * Abstract tenant storefront mock for the B2B landing.
- * Not a flower shop, not Casa Limón chrome — only “así se vería tu marca”.
+ * Tenant plan teaser for the B2B landing — B2C beats the florist should see.
+ * Not a flower grid and not Cairose chrome selling bouquets.
  */
 export function StorefrontPreviewFrame() {
   const copy = marketingCopy.demo;
@@ -19,43 +19,24 @@ export function StorefrontPreviewFrame() {
           {copy.frameAddress}
         </p>
       </div>
-      <div className="p-4">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span
-              aria-hidden
-              className="h-7 w-7 rounded-[var(--cao-radius-sm)] bg-[var(--cao-color-lilac)]"
-            />
-            <span className="font-[family-name:var(--cao-font-display)] text-sm font-bold text-[var(--cao-color-ink)]">
-              {copy.frameBrand}
-            </span>
-          </div>
-          <span
-            aria-hidden
-            className="h-6 w-14 rounded-full bg-[var(--cao-color-border)]"
-          />
+      <div className="p-5">
+        <p className="font-[family-name:var(--cao-font-display)] text-sm font-bold text-[var(--cao-color-ink)]">
+          {copy.frameBrand}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <span className="rounded-full bg-[var(--cao-color-primary)] px-3 py-1 text-sm text-[var(--cao-color-on-primary)]">
+            {copy.beatSelf}
+          </span>
+          <span className="rounded-full border border-[var(--cao-color-border)] px-3 py-1 text-sm text-[var(--cao-color-ink)]">
+            {copy.beatGift}
+          </span>
         </div>
-        <div className="mt-5 grid grid-cols-3 gap-2">
-          {["a", "b", "c"].map((key) => (
-            <div
-              key={key}
-              className="rounded-[var(--cao-radius-md)] border border-[var(--cao-color-border)] bg-[var(--cao-color-bg)] p-2"
-            >
-              <div
-                aria-hidden
-                className="h-9 rounded bg-[var(--cao-color-lilac)]/30"
-              />
-              <div
-                aria-hidden
-                className="mt-2 h-2 w-4/5 rounded bg-[var(--cao-color-ink)]/12"
-              />
-              <div
-                aria-hidden
-                className="mt-1.5 h-2 w-1/2 rounded bg-[var(--cao-color-ink)]/10"
-              />
-            </div>
-          ))}
-        </div>
+        <p className="mt-4 text-sm font-medium text-[var(--cao-color-ink)]">
+          {copy.beatCadence}
+        </p>
+        <p className="mt-2 text-sm text-[var(--cao-color-ink-muted)]">
+          {copy.beatPay}
+        </p>
       </div>
     </div>
   );

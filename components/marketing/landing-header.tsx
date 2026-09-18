@@ -4,7 +4,11 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
 import { CairoseWordmark } from "@/components/marketing/wordmark";
-import { SIGN_UP_HREF, marketingCopy } from "@/lib/marketing-copy";
+import {
+  DEMO_STOREFRONT_HREF,
+  SIGN_UP_HREF,
+  marketingCopy,
+} from "@/lib/marketing-copy";
 import { cn } from "@/lib/utils";
 
 const HOW_HREF = `#${marketingCopy.how.id}`;
@@ -52,7 +56,7 @@ export function LandingHeader() {
             scrolled && "scale-[0.92]",
           )}
         />
-        <nav className="flex items-center gap-2 sm:gap-4">
+        <nav className="flex items-center gap-2 sm:gap-3">
           <Link
             href={HOW_HREF}
             className="hidden text-sm text-[var(--cao-color-ink-muted)] hover:text-[var(--cao-color-ink)] sm:inline"
@@ -67,6 +71,9 @@ export function LandingHeader() {
           </Link>
           <Button asChild variant="ghost" size="sm">
             <Link href={SIGN_UP_HREF}>{marketingCopy.nav.signup}</Link>
+          </Button>
+          <Button asChild size="sm" className="hidden md:inline-flex">
+            <Link href={DEMO_STOREFRONT_HREF}>{marketingCopy.nav.cta}</Link>
           </Button>
         </nav>
       </div>

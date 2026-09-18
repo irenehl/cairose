@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { LandingHeader } from "@/components/marketing/landing-header";
 import { StorefrontPreviewFrame } from "@/components/marketing/storefront-preview-frame";
 import { CairoseWordmark } from "@/components/marketing/wordmark";
 import {
   DEMO_STOREFRONT_HREF,
+  PANEL_HREF,
   SIGN_UP_HREF,
   marketingCopy,
 } from "@/lib/marketing-copy";
@@ -62,9 +62,16 @@ export function LandingPage() {
             {copy.hero.eyebrow}
           </p>
           <h1 className="max-w-3xl font-[family-name:var(--cao-font-display)] text-[2.15rem] leading-[1.12] font-extrabold text-balance sm:text-5xl">
-            {copy.hero.title}
+            <span className="sm:hidden">{copy.hero.titleMobile}</span>
+            <span className="hidden sm:inline">
+              {copy.hero.titleBefore}
+              <strong className="font-extrabold text-[var(--cao-color-primary)]">
+                {copy.hero.titleEm}
+              </strong>
+              {copy.hero.titleAfter}
+            </span>
           </h1>
-          <p className="max-w-xl text-base text-[var(--cao-color-ink-muted)] sm:text-lg">
+          <p className="max-w-2xl text-base text-[var(--cao-color-ink-muted)] sm:text-lg">
             {copy.hero.subBefore}
             <strong className="font-semibold text-[var(--cao-color-ink)]">
               {copy.hero.subEm}
@@ -76,31 +83,51 @@ export function LandingPage() {
             <GhostCta href={HOW_HREF}>{copy.hero.ctaHow}</GhostCta>
           </div>
           <p className="text-sm text-[var(--cao-color-ink-muted)]">
-            <Link
-              href={DEMO_STOREFRONT_HREF}
-              className="underline-offset-4 hover:underline"
-            >
-              {copy.hero.connect}
-            </Link>
-          </p>
-          <p className="text-sm text-[var(--cao-color-ink-muted)]">
             {copy.hero.micro}
           </p>
         </section>
 
         <section className="border-t border-[var(--cao-color-border)] px-5 py-14">
-          <ul className="grid gap-4 md:grid-cols-3">
-            {copy.problem.pains.map((pain) => (
+          <h2 className="max-w-2xl font-[family-name:var(--cao-font-display)] text-3xl font-bold text-balance">
+            {copy.coexist.title}
+          </h2>
+          <p className="mt-4 max-w-xl text-[var(--cao-color-ink-muted)]">
+            {copy.coexist.line}
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {copy.coexist.chips.map((chip) => (
               <li
-                key={pain}
-                className="rounded-[var(--cao-radius-lg)] border border-[var(--cao-color-border)] bg-[var(--cao-color-bg-elevated)] p-5"
+                key={chip}
+                className="rounded-full border border-[var(--cao-color-border)] bg-[var(--cao-color-bg-elevated)] px-3 py-1 text-sm"
               >
-                <p>{pain}</p>
+                {chip}
               </li>
             ))}
           </ul>
-          <p className="mt-8 max-w-2xl font-[family-name:var(--cao-font-display)] text-xl font-bold">
-            {copy.problem.promise}
+        </section>
+
+        <section className="border-t border-[var(--cao-color-border)] px-5 py-14">
+          <ol className="grid gap-10 md:grid-cols-3 md:gap-6">
+            {copy.scenes.items.map((scene, index) => (
+              <li key={scene.title}>
+                <p className="text-xs font-medium tracking-[0.16em] text-[var(--cao-color-ink-muted)] uppercase">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 font-[family-name:var(--cao-font-display)] text-xl font-bold">
+                  {scene.title}
+                </h3>
+                <p className="mt-2 text-[var(--cao-color-ink-muted)]">
+                  {scene.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-10 max-w-2xl font-[family-name:var(--cao-font-display)] text-xl font-bold text-balance">
+            {copy.scenes.closerBefore}
+            <strong className="font-bold">{copy.scenes.closerEm1}</strong>
+            {copy.scenes.closerMid}
+            <strong className="font-bold">{copy.scenes.closerEm2}</strong>
+            {copy.scenes.closerAfter}
           </p>
         </section>
 
@@ -111,57 +138,35 @@ export function LandingPage() {
           <h2 className="font-[family-name:var(--cao-font-display)] text-3xl font-bold">
             {copy.how.title}
           </h2>
-          <ol className="mt-8 grid gap-4 md:grid-cols-3">
+          <ol className="mt-8 grid gap-8 md:grid-cols-3 md:gap-6">
             {copy.how.steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-[var(--cao-radius-lg)] bg-[var(--cao-color-bg-elevated)] p-5 ring-1 ring-[var(--cao-color-border)]"
-              >
+              <li key={step.title}>
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--cao-color-sun)] font-[family-name:var(--cao-font-display)] text-sm font-bold text-[var(--cao-color-ink)]">
                   {index + 1}
                 </span>
                 <h3 className="mt-4 font-[family-name:var(--cao-font-display)] text-lg font-bold">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-[var(--cao-color-ink-muted)]">
-                  {step.body}
-                </p>
+                {"body" in step ? (
+                  <p className="mt-2 text-[var(--cao-color-ink-muted)]">
+                    {step.body}
+                  </p>
+                ) : (
+                  <p className="mt-2 text-[var(--cao-color-ink-muted)]">
+                    {step.bodyBefore}
+                    <strong className="font-semibold text-[var(--cao-color-ink)]">
+                      {step.bodyEm1}
+                    </strong>
+                    {step.bodyMid}
+                    <strong className="font-semibold text-[var(--cao-color-ink)]">
+                      {step.bodyEm2}
+                    </strong>
+                    {step.bodyAfter}
+                  </p>
+                )}
               </li>
             ))}
           </ol>
-        </section>
-
-        <section className="border-t border-[var(--cao-color-border)] px-5 py-14">
-          <h2 className="font-[family-name:var(--cao-font-display)] text-3xl font-bold">
-            {copy.includes.title}
-          </h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {copy.includes.cards.map((card, index) => {
-              const accents = [
-                "bg-[var(--cao-color-lilac)]",
-                "bg-[var(--cao-color-mint)]",
-                "bg-[var(--cao-color-accent)]",
-                "bg-[var(--cao-color-sun)]",
-              ] as const;
-              return (
-                <Card key={card.title} className="shadow-none">
-                  <span
-                    aria-hidden
-                    className={`mb-3 block h-2.5 w-2.5 rounded-full ${accents[index]}`}
-                  />
-                  <h3 className="font-[family-name:var(--cao-font-display)] text-lg font-bold">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-[var(--cao-color-ink-muted)]">
-                    {card.body}
-                  </p>
-                </Card>
-              );
-            })}
-          </div>
-          <p className="mt-5 text-sm text-[var(--cao-color-ink-muted)]">
-            {copy.includes.note}
-          </p>
         </section>
 
         <section
@@ -170,11 +175,27 @@ export function LandingPage() {
         >
           <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="text-sm font-medium tracking-[0.14em] text-[var(--cao-color-ink-muted)] uppercase">
-                {copy.demo.kicker}
-              </p>
-              <p className="mt-3 max-w-lg text-lg text-[var(--cao-color-ink-muted)]">
-                {copy.demo.body}
+              <h2 className="font-[family-name:var(--cao-font-display)] text-3xl font-bold text-balance">
+                {copy.demo.titleBefore}
+                <strong className="font-extrabold text-[var(--cao-color-primary)]">
+                  {copy.demo.titleEm}
+                </strong>
+                {copy.demo.titleAfter}
+              </h2>
+              <p className="mt-4 max-w-lg text-lg text-[var(--cao-color-ink-muted)]">
+                {copy.demo.bodyBefore}
+                <strong className="font-semibold text-[var(--cao-color-ink)]">
+                  {copy.demo.bodyEm1}
+                </strong>
+                {copy.demo.bodyMid}
+                <strong className="font-semibold text-[var(--cao-color-ink)]">
+                  {copy.demo.bodyEm2}
+                </strong>
+                {copy.demo.bodyCadence}
+                <strong className="font-semibold text-[var(--cao-color-ink)]">
+                  {copy.demo.bodyPay}
+                </strong>
+                {copy.demo.bodyAfter}
               </p>
               <PrimaryDemoCta className="mt-6" />
             </div>
@@ -190,15 +211,15 @@ export function LandingPage() {
 
         <section className="border-t border-[var(--cao-color-border)] px-5 py-14">
           <h2 className="font-[family-name:var(--cao-font-display)] text-3xl font-bold">
-            {copy.audience.title}
+            {copy.workshop.title}
           </h2>
-          <ul className="mt-6 grid gap-4 md:grid-cols-2">
-            {copy.audience.items.map((item) => (
-              <li
-                key={item}
-                className="rounded-[var(--cao-radius-lg)] border border-[var(--cao-color-border)] bg-[var(--cao-color-bg-elevated)] p-5"
-              >
-                {item}
+          <p className="mt-4 max-w-xl text-[var(--cao-color-ink-muted)]">
+            {copy.workshop.body}
+          </p>
+          <ul className="mt-6 max-w-md divide-y divide-[var(--cao-color-border)] border-y border-[var(--cao-color-border)]">
+            {copy.workshop.rows.map((row) => (
+              <li key={row} className="py-3 font-medium">
+                {row}
               </li>
             ))}
           </ul>
@@ -223,25 +244,11 @@ export function LandingPage() {
                   </span>
                 </summary>
                 <p className="mt-2 text-[var(--cao-color-ink-muted)]">{item.a}</p>
+                {item.q === "¿Hay ejemplo?" ? (
+                  <PrimaryDemoCta className="mt-4" />
+                ) : null}
               </details>
             ))}
-            <details className="group py-4">
-              <summary className="cursor-pointer list-none font-medium marker:content-none">
-                <span className="flex items-center justify-between gap-4">
-                  {copy.faq.exampleQ}
-                  <span className="text-[var(--cao-color-ink-muted)] group-open:hidden">
-                    +
-                  </span>
-                  <span className="hidden text-[var(--cao-color-ink-muted)] group-open:inline">
-                    −
-                  </span>
-                </span>
-              </summary>
-              <p className="mt-2 text-[var(--cao-color-ink-muted)]">
-                {copy.faq.exampleA}
-              </p>
-              <PrimaryDemoCta className="mt-4" />
-            </details>
           </div>
         </section>
       </main>
@@ -260,6 +267,9 @@ export function LandingPage() {
             </Link>
             <Link href={DEMO_HREF} className={FOOTER_LINK_CLASS}>
               {copy.footer.demo}
+            </Link>
+            <Link href={PANEL_HREF} className={FOOTER_LINK_CLASS}>
+              {copy.footer.panel}
             </Link>
             <Link href={SIGN_UP_HREF} className={FOOTER_LINK_CLASS}>
               {copy.footer.signup}

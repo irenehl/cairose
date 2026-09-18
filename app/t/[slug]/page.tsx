@@ -39,9 +39,6 @@ export default function StoreHomePage() {
         <Button asChild variant="shop" className="mt-6" size="lg">
           <Link href={`/t/${tenant.slug}/planes`}>{casaLimonCopy.cta}</Link>
         </Button>
-        <p className="mt-4 text-xs text-[var(--tenant-ink-muted)]">
-          {casaLimonCopy.showcaseNote}
-        </p>
       </section>
       <section>
         <h2 className="font-[family-name:var(--tenant-font-display)] text-2xl">

@@ -10,8 +10,8 @@
   --tenant-secondary: #e5d5a8;
   --tenant-border: #e5d5a8;
   --tenant-on-primary: #fff8e7;
-  --tenant-font-display: "Fraunces", Georgia, serif;
-  --tenant-font-body: "Figtree", system-ui, sans-serif;
+  --tenant-font-display: var(--font-fraunces), Georgia, serif;
+  --tenant-font-body: var(--font-figtree), system-ui, sans-serif;
 
   /* aliases used by storefront components */
   --tenant-color-bg: var(--tenant-bg);

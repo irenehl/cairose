@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { usePublicTenant } from "@/lib/hooks";
 import { analyticsContext, track, whatsappHref } from "@/lib/analytics";
+import { DemoChip } from "@/components/storefront/demo-chip";
 import {
   DEMO_BRAND_KEY,
   DEMO_HERO_IMAGE,
@@ -91,6 +92,7 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
           </Link>
         </div>
       </header>
+      {tenant.slug === DEMO_SLUG ? <DemoChip /> : null}
       <div className="flex-1">{children}</div>
       <footer className="mt-16 px-4 py-8 text-sm text-[var(--tenant-ink-muted)] md:px-8">
         <p>{casaLimonCopy.footer}</p>
@@ -114,9 +116,15 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
           </p>
         )}
         <p className="mt-2 text-xs">{casaLimonCopy.payOutside}</p>
-        <p className="mt-3 text-xs text-[var(--tenant-ink-muted)]">
-          {casaLimonCopy.showcaseNote}
-        </p>
+        {tenant.slug === DEMO_SLUG ? (
+          <p className="mt-3 text-xs text-[var(--tenant-ink-muted)]">
+            {casaLimonCopy.poweredBy}
+            {" · "}
+            <Link href="/" className="underline underline-offset-2">
+              {casaLimonCopy.knowCairose}
+            </Link>
+          </p>
+        ) : null}
       </footer>
     </div>
   );

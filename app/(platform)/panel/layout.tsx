@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
+import { CairoseWordmark } from "@/components/marketing/wordmark";
 import { isClerkConfigured, isConvexConfigured } from "@/lib/env";
 import { panel } from "@/lib/copy";
 import { usePanelActions } from "@/lib/hooks";
@@ -36,12 +36,7 @@ export default function PanelLayout({
   return (
     <div className="flex min-h-full flex-1 flex-col md:flex-row">
       <aside className="flex flex-col gap-8 bg-[var(--cao-color-primary)] px-5 py-6 text-[var(--cao-color-on-primary)] md:w-60">
-        <Link href="/panel" className="flex items-center gap-3">
-          <Image src="/cairose-mark.svg" alt="" width={36} height={36} />
-          <span className="font-[family-name:var(--cao-font-display)] text-xl tracking-tight">
-            {panel["app.name"]}
-          </span>
-        </Link>
+        <CairoseWordmark href="/panel" variant="on-dark" />
         <nav className="flex flex-row gap-2 overflow-x-auto md:flex-col">
           {NAV.map((item) => {
             const active =

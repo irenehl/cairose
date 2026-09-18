@@ -93,6 +93,14 @@ export function LandingPage() {
             <GhostCta href={HOW_HREF}>{copy.hero.ctaHow}</GhostCta>
           </div>
           <p className="text-sm text-[var(--cao-color-ink-muted)]">
+            <Link
+              href={DEMO_STOREFRONT_HREF}
+              className="underline-offset-4 hover:underline"
+            >
+              {copy.hero.connect}
+            </Link>
+          </p>
+          <p className="text-sm text-[var(--cao-color-ink-muted)]">
             {copy.hero.micro}
           </p>
         </section>

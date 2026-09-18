@@ -16,7 +16,7 @@ export const marketingCopy = {
       "No reemplazamos tu web. Añadimos suscripciones y gift bajo ",
     subEm: "tu",
     subAfter:
-      " marca — white-label entre tu clienta y tu floristería. Nosotras no vendemos el ramo.",
+      " marca, a tu sitio o WhatsApp. Nosotras no vendemos el ramo.",
     ctaPrimary: "¿cómo se vería mi marca?",
     ctaHow: "Cómo funciona",
     connect: "Conectá con tu sitio / WhatsApp",
@@ -29,7 +29,7 @@ export const marketingCopy = {
       "Marca propia: tu clienta debería ver tu nombre, no el de otra plataforma.",
     ],
     promise:
-      "No reemplazamos tu web: añadimos suscripciones y gift bajo tu marca. Vos cobrás; ella ve tu nombre.",
+      "No reemplazamos tu web: añadimos suscripciones y gift (planes) bajo tu marca, a tu sitio o WhatsApp. Vos cobrás; ella ve tu nombre.",
   },
   how: {
     id: "como-funciona",

@@ -1,0 +1,40 @@
+{
+  "name": "cairose",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cairose — multi-tenant white-label facilitator platform for florists. We never sell flowers.",
+  "scripts": {
+    "dev": "next dev --port 43147 --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --port 43147 --hostname 127.0.0.1",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "convex:dev": "CONVEX_AGENT_MODE=anonymous npx convex dev"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.36.5",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "convex": "^1.31.2",
+    "convex-helpers": "^0.1.111",
+    "lucide-react": "^0.562.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@convex-dev/eslint-plugin": "^1.0.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

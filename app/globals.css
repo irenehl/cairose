@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "./cairose-tokens.css";
+@import "./tenant-theme.css";
+
+@theme inline {
+  --color-background: var(--cao-color-bg);
+  --color-foreground: var(--cao-color-ink);
+  --font-sans: var(--cao-font-body);
+  --font-display: var(--cao-font-display);
+  --font-mono: var(--cao-font-mono);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--cao-color-bg);
+  color: var(--cao-color-ink);
+  font: var(--cao-text-body);
+}
+
+a {
+  color: inherit;
+}

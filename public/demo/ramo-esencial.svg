@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Ramo esencial">
+  <rect width="640" height="400" fill="#E8E2C4"/>
+  <circle cx="300" cy="170" r="54" fill="#C45C6A"/>
+  <circle cx="360" cy="150" r="46" fill="#D98A74"/>
+  <circle cx="250" cy="150" r="40" fill="#E8B4A2"/>
+  <rect x="312" y="210" width="16" height="120" rx="8" fill="#3F4D24"/>
+</svg>

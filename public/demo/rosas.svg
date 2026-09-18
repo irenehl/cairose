@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Docena de rosas">
+  <rect width="640" height="400" fill="#E9DFD2"/>
+  <circle cx="250" cy="150" r="36" fill="#B84355"/>
+  <circle cx="300" cy="130" r="36" fill="#C45C6A"/>
+  <circle cx="350" cy="150" r="36" fill="#9B2E44"/>
+  <circle cx="280" cy="190" r="32" fill="#D98A74"/>
+  <circle cx="330" cy="190" r="32" fill="#B84355"/>
+  <rect x="300" y="220" width="16" height="120" rx="8" fill="#3F4D24"/>
+</svg>

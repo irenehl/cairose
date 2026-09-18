@@ -1,0 +1,30 @@
+/* Casa Limón — tenant theme (storefront only). Official kit. */
+[data-tenant="casa-limon"] {
+  --tenant-bg: #fff8e7;
+  --tenant-ink: #2c2416;
+  --tenant-ink-muted: #6b5e45;
+  --tenant-primary: #3a5f3a;
+  --tenant-primary-hover: #2f4e2f;
+  --tenant-accent: #e8b84a;
+  --tenant-accent-hover: #d4a63a;
+  --tenant-secondary: #e5d5a8;
+  --tenant-border: #e5d5a8;
+  --tenant-on-primary: #fff8e7;
+  --tenant-font-display: "Fraunces", Georgia, serif;
+  --tenant-font-body: "Figtree", system-ui, sans-serif;
+
+  /* aliases used by storefront components */
+  --tenant-color-bg: var(--tenant-bg);
+  --tenant-color-bg-elevated: #fffdf4;
+  --tenant-color-ink: var(--tenant-ink);
+  --tenant-color-ink-muted: var(--tenant-ink-muted);
+  --tenant-color-primary: var(--tenant-primary);
+  --tenant-color-primary-hover: var(--tenant-primary-hover);
+  --tenant-color-accent: var(--tenant-accent);
+  --tenant-color-border: var(--tenant-border);
+  --tenant-color-on-primary: var(--tenant-on-primary);
+
+  background: var(--tenant-bg);
+  color: var(--tenant-ink);
+  font-family: var(--tenant-font-body);
+}

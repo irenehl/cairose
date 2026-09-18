@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Ramo clásico">
+  <rect width="640" height="400" fill="#E4DCC0"/>
+  <circle cx="270" cy="160" r="58" fill="#B84355"/>
+  <circle cx="340" cy="140" r="52" fill="#C96B58"/>
+  <circle cx="390" cy="180" r="44" fill="#D9A07A"/>
+  <circle cx="230" cy="190" r="36" fill="#E8C39A"/>
+  <rect x="312" y="220" width="16" height="120" rx="8" fill="#3F4D24"/>
+</svg>

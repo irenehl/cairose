@@ -54,6 +54,7 @@ export const deliveryStatus = v.union(
 
 export const tenantPublic = v.object({
   _id: v.id("tenants"),
+  _creationTime: v.number(),
   name: v.string(),
   slug: v.string(),
   logoUrl: v.optional(v.string()),
@@ -70,6 +71,7 @@ export const tenantPublic = v.object({
 
 export const productDoc = v.object({
   _id: v.id("products"),
+  _creationTime: v.number(),
   tenantId: v.id("tenants"),
   sku: v.string(),
   name: v.string(),
@@ -86,6 +88,7 @@ export const productDoc = v.object({
 
 export const addOnDoc = v.object({
   _id: v.id("addOns"),
+  _creationTime: v.number(),
   tenantId: v.id("tenants"),
   sku: v.string(),
   name: v.string(),
@@ -95,6 +98,7 @@ export const addOnDoc = v.object({
 
 export const zoneDoc = v.object({
   _id: v.id("zones"),
+  _creationTime: v.number(),
   tenantId: v.id("tenants"),
   name: v.string(),
   slug: v.string(),

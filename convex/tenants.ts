@@ -14,6 +14,7 @@ export const getPublicBySlug = query({
     if (!tenant) return null;
     return {
       _id: tenant._id,
+      _creationTime: tenant._creationTime,
       name: tenant.name,
       slug: tenant.slug,
       logoUrl: tenant.logoUrl,
@@ -56,6 +57,7 @@ export const getMine = query({
 
     return {
       _id: tenant._id,
+      _creationTime: tenant._creationTime,
       name: tenant.name,
       slug: tenant.slug,
       logoUrl: tenant.logoUrl,

@@ -5,6 +5,7 @@ import { deliveryStatus } from "./lib/validators";
 
 const deliveryRow = v.object({
   _id: v.id("deliveries"),
+  _creationTime: v.number(),
   tenantId: v.id("tenants"),
   subscriptionId: v.id("subscriptions"),
   scheduledFor: v.number(),
@@ -37,6 +38,7 @@ export const listMine = query({
       if (!product || !recipient || !payer || !address) continue;
       out.push({
         _id: delivery._id,
+        _creationTime: delivery._creationTime,
         tenantId: delivery.tenantId,
         subscriptionId: delivery.subscriptionId,
         scheduledFor: delivery.scheduledFor,

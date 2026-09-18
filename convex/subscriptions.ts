@@ -12,6 +12,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 const subscriptionDoc = v.object({
   _id: v.id("subscriptions"),
+  _creationTime: v.number(),
   tenantId: v.id("tenants"),
   payerCustomerId: v.id("customers"),
   recipientId: v.id("recipients"),
@@ -28,6 +29,7 @@ const subscriptionDoc = v.object({
 
 const eventDoc = v.object({
   _id: v.id("subscriptionEvents"),
+  _creationTime: v.number(),
   tenantId: v.id("tenants"),
   subscriptionId: v.id("subscriptions"),
   type: subscriptionEventType,

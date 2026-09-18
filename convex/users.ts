@@ -4,6 +4,7 @@ import type { Id } from "./_generated/dataModel";
 
 const userPublic = v.object({
   _id: v.id("users"),
+  _creationTime: v.number(),
   tokenIdentifier: v.string(),
   clerkUserId: v.optional(v.string()),
   email: v.optional(v.string()),
@@ -52,6 +53,7 @@ export const ensureMe = mutation({
       if (!updated) throw new Error("User not found after patch");
       return {
         _id: updated._id,
+        _creationTime: updated._creationTime,
         tokenIdentifier: updated.tokenIdentifier,
         clerkUserId: updated.clerkUserId,
         email: updated.email,
@@ -75,6 +77,7 @@ export const ensureMe = mutation({
     if (!created) throw new Error("User not found after insert");
     return {
       _id: created._id,
+      _creationTime: created._creationTime,
       tokenIdentifier: created.tokenIdentifier,
       clerkUserId: created.clerkUserId,
       email: created.email,
@@ -99,6 +102,7 @@ export const me = query({
     if (!user) return null;
     return {
       _id: user._id,
+      _creationTime: user._creationTime,
       tokenIdentifier: user.tokenIdentifier,
       clerkUserId: user.clerkUserId,
       email: user.email,

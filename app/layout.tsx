@@ -39,7 +39,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Cairose",
   description:
-    "No reemplazamos tu web. Cairose añade suscripciones y gift bajo tu marca. Nosotras no vendemos el ramo.",
+    "Que no se les olvide el día — y que el detalle llegue con tu nombre. Cairose se suma a tu WhatsApp y a tu sitio. Nosotras no vendemos flores.",
   icons: {
     icon: [
       { url: "/cairose-favicon.svg", type: "image/svg+xml" },

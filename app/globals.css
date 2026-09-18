@@ -24,3 +24,24 @@ body {
 a {
   color: inherit;
 }
+
+/* Landing motion P0: shrink only when motion is allowed. */
+.landing-header,
+.landing-header-inner,
+.landing-header-wordmark {
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    backdrop-filter 200ms ease,
+    padding 200ms ease,
+    transform 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-header,
+  .landing-header-inner,
+  .landing-header-wordmark {
+    transition: none;
+  }
+}

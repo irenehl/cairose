@@ -297,7 +297,10 @@ export default function SubscribePage() {
             </fieldset>
           )}
           <div className="rounded-[var(--cao-radius-md)] border border-dashed border-[var(--tenant-border)] p-3 text-sm">
-            <p className="font-medium">{casaLimonCopy.paySoon}</p>
+            <p className="font-medium">{casaLimonCopy.payFlorist}</p>
+            <p className="mt-1 text-[var(--tenant-ink-muted)]">
+              {casaLimonCopy.paySoon}
+            </p>
             <p className="mt-1 text-[var(--tenant-ink-muted)]">
               {casaLimonCopy.payOutside}
             </p>

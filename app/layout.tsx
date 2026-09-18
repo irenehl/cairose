@@ -39,7 +39,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Cairose",
   description:
-    "Cairose es la plataforma para floristerías: planes recurrentes con tu marca. Nosotras no vendemos el ramo.",
+    "Cairose es la plataforma white-label entre tu clienta y tu floristería. Nosotras no vendemos el ramo.",
   icons: { icon: "/cairose-mark.svg" },
 };
 

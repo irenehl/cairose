@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { StorefrontPreviewFrame } from "@/components/marketing/storefront-preview-frame";
 import { CairoseWordmark } from "@/components/marketing/wordmark";
 import {
   DEMO_STOREFRONT_HREF,
@@ -186,21 +187,13 @@ export function LandingPage() {
               </p>
               <PrimaryDemoCta className="mt-6" />
             </div>
-            <div className="rounded-[var(--cao-radius-lg)] border border-[var(--cao-color-border)] bg-[#fff8e7] p-5 shadow-sm">
-              <div className="flex items-center justify-between gap-3">
-                <p className="font-[family-name:var(--cao-font-display)] text-xl font-semibold text-[#2c2416]">
-                  {copy.demo.kicker}
-                </p>
-                <span className="rounded-full bg-[#3a5f3a] px-3 py-1 text-xs text-[#fff8e7]">
-                  {copy.demo.shopCta}
-                </span>
-              </div>
-              <p className="mt-2 text-sm text-[#6b5e45]">{copy.demo.shopTagline}</p>
-              <div className="mt-5 grid grid-cols-2 gap-3">
-                <div className="h-20 rounded-[var(--cao-radius-md)] bg-[#e5d5a8]/70" />
-                <div className="h-20 rounded-[var(--cao-radius-md)] bg-[#e8b84a]/40" />
-              </div>
-            </div>
+            <Link
+              href={DEMO_STOREFRONT_HREF}
+              aria-label={copy.demo.cta}
+              className="block"
+            >
+              <StorefrontPreviewFrame />
+            </Link>
           </div>
         </section>
 

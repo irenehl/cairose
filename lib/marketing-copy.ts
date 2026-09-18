@@ -11,7 +11,8 @@ export const marketingCopy = {
   hero: {
     eyebrow: "Para floristerías",
     title: "Capturá el momento justo — bajo tu marca.",
-    subBefore: "Cairose es la plataforma para floristerías: planes recurrentes con ",
+    subBefore:
+      "Cairose es la plataforma white-label entre tu clienta y tu floristería: planes recurrentes con ",
     subEm: "tu",
     subAfter:
       " marca. Nosotras no vendemos el ramo — tu clienta ve tu nombre.",
@@ -25,7 +26,8 @@ export const marketingCopy = {
       "Chat eterno: fotos, precios y direcciones en un hilo que no termina.",
       "Marca propia: tu clienta debería ver tu nombre, no el de otra plataforma.",
     ],
-    promise: "Plataforma white-label: vos cobrás; tu clienta ve tu nombre.",
+    promise:
+      "El medio entre clienta y floristería: white-label. Vos cobrás; ella ve tu nombre.",
   },
   how: {
     id: "como-funciona",
@@ -33,7 +35,7 @@ export const marketingCopy = {
     steps: [
       {
         title: "Tu marca, tu tienda",
-        body: "Logo, colores, catálogo.",
+        body: "Logo, colores, catálogo — de la floristería, no de Cairose.",
       },
       {
         title: "Planes que vuelven",
@@ -50,7 +52,7 @@ export const marketingCopy = {
     cards: [
       {
         title: "White-label",
-        body: "Tu logo, tus colores, tu tienda.",
+        body: "Tu logo, tus colores, tu tienda. El catálogo es de la floristería.",
       },
       {
         title: "Planes recurrentes",
@@ -69,11 +71,11 @@ export const marketingCopy = {
   },
   demo: {
     id: "demo",
-    kicker: "Casa Limón",
+    kicker: "Demo",
     body: "Showcase ficticio — así se vería tu marca. No es una floristería real.",
     cta: "¿cómo se vería mi marca?",
-    shopTagline: "Flores con gusto a casa",
-    shopCta: "Ver planes",
+    frameBrand: "Tu marca",
+    frameAddress: "tu marca",
   },
   audience: {
     title: "Para quién",
@@ -87,7 +89,7 @@ export const marketingCopy = {
     items: [
       {
         q: "¿Cairose vende flores?",
-        a: "No. Nosotras no vendemos el ramo — tu clienta ve tu nombre.",
+        a: "No. Cairose es el medio entre tu clienta y tu floristería. Nosotras no vendemos el ramo — ella ve tu nombre.",
       },
       {
         q: "¿Cobro en la app?",
@@ -99,12 +101,12 @@ export const marketingCopy = {
       },
     ],
     exampleQ: "¿Hay un ejemplo?",
-    exampleA: "Sí. Entrá a la vitrina ficticia.",
+    exampleA: "Sí. Mirá un showcase ficticio de cómo se vería tu marca.",
     exampleCta: "¿cómo se vería mi marca?",
   },
   footer: {
     claim:
-      "Cairose es la plataforma para floristerías. Nosotras no vendemos el ramo.",
+      "Cairose es el medio entre tu clienta y tu floristería. White-label: nosotras no vendemos el ramo.",
     signup: "Crear cuenta",
     how: "Cómo funciona",
     demo: "Demo",

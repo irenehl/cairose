@@ -31,14 +31,14 @@ export function Drawer() {
   }
 
   return (
-    <div className="fixed inset-0 z-20 flex justify-end">
+    <div className="fixed inset-0 z-50 flex justify-end">
       <button
         type="button"
         aria-label="Cerrar drawer"
         className="h-full flex-1 bg-stone-900/30"
         onClick={closeDrawer}
       />
-      <aside className="flex h-full w-full max-w-md flex-col overflow-y-auto border-l border-stone-300 bg-white p-4 shadow-xl">
+      <aside className="flex h-full w-full max-w-md flex-col overflow-y-auto border-l border-stone-300 bg-white p-4 pb-16 shadow-xl">
         <div className="mb-3 flex items-start justify-between gap-3">
           <h2 className="text-lg font-semibold text-stone-900">
             {selectedLead?.name ?? selectedCompetitor?.name ?? "Detalle"}

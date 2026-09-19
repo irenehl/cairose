@@ -148,7 +148,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <footer className="flex flex-wrap gap-x-4 gap-y-1 border-t border-stone-300 bg-stone-900 px-4 py-2 text-xs text-stone-100">
+      <footer className="relative z-10 flex flex-wrap gap-x-4 gap-y-1 border-t border-stone-300 bg-stone-900 px-4 py-2 text-xs text-stone-100">
         <span>Buyer: florist SaaS</span>
         <span>Take: 0% v1</span>
         <span>Coexist: site / WhatsApp</span>

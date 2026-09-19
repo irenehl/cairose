@@ -12,7 +12,7 @@ python3 -m http.server 43147 --bind 127.0.0.1 --directory public
 
 Abrir http://127.0.0.1:43147/propuesta/index.html
 
-Al servirlo con Next.js, la ruta del archivo estático es `/propuesta/index.html`. No sustituye la landing ni el panel de producción.
+Al servirlo con Next.js, la ruta del archivo estático es `/propuesta/index.html`. La página principal `/` sirve este archivo mediante una reescritura en `next.config.ts`. El panel operativo `/panel` permanece separado de la demo con datos simulados.
 
 ## Recorrido
 
